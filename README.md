@@ -1,2 +1,3 @@
 # upshift
- Mitchell Reiss's aA Final Project
+aA Final Project
+Mitchell Reiss
