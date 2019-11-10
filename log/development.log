@@ -1,0 +1,60 @@
+Started GET "/" for ::1 at 2019-11-09 15:57:56 -0800
+
+PG::ConnectionBad - FATAL:  database "upshift_development" does not exist
+:
+
+Started POST "/__better_errors/592e3317dd1c1474/variables" for ::1 at 2019-11-09 15:57:57 -0800
+  [1m[35m (553.2ms)[0m  [1m[35mCREATE DATABASE "upshift_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (559.3ms)[0m  [1m[35mCREATE DATABASE "upshift_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-11-09 15:58:18 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/Mitchell/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/Mitchell/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (7.7ms)
+Completed 200 OK in 21ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-11-09 15:58:34 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/Mitchell/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/Mitchell/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (4.5ms)
+Completed 200 OK in 14ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-11-09 15:58:48 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/Mitchell/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/Mitchell/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 12ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-11-09 16:03:18 -0800
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/5a0f7e052e2c18ae/variables" for ::1 at 2019-11-09 16:03:19 -0800
+Started GET "/" for ::1 at 2019-11-09 16:04:27 -0800
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/944c7e5b19bca2ca/variables" for ::1 at 2019-11-09 16:04:27 -0800
+Started GET "/" for ::1 at 2019-11-09 16:06:34 -0800
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/1db53bef3eb06df9/variables" for ::1 at 2019-11-09 16:06:35 -0800
+Started GET "/" for ::1 at 2019-11-09 16:09:14 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3131ms (Views: 3101.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-11-09 16:10:30 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 1017ms (Views: 1010.7ms | ActiveRecord: 0.0ms)
+
+
