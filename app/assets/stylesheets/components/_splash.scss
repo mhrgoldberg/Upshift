@@ -1,0 +1,18 @@
+
+
+.splash {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: row;
+  box-sizing: border-box;
+  background-size: unset;
+  position: relative;
+  overflow: hidden;
+  background-image: asset-url("2_women_splash.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}

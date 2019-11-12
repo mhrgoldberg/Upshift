@@ -1,0 +1,72 @@
+form button {
+  color: $white;
+  font-size: 14px;
+  background-color:$blue;
+  border-radius: 5px;
+  width: 100px;
+  padding: 5px;
+  display: block;
+  margin: 0 auto;
+}
+
+form label {
+}
+
+form input {
+	flex: 1;
+  background-color: $white;
+	padding: 5px;
+  border: 4px solid $blue;
+  border-radius: 5px;
+  margin: 5px;
+  display: block;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+form select {
+  border-radius: 5px;
+  border: 4px solid $blue;
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+form textarea {
+  border-radius: 5px;
+  border: 4px solid $blue;
+  background-color: $white;
+  width: 80%;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.form {  
+  background-color: rgba(54, 54, 54, 0.774);
+  border-radius: 8px;
+  width: 600px;
+  height: 100%;
+  padding: 15px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.background{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: row;
+  box-sizing: border-box;
+  background-size: unset;
+  background-image: asset-url("cycling_splash.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h2{
+
+}
