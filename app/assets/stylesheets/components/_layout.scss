@@ -13,7 +13,8 @@ button {
 
 button:hover {
 	background-color: $darkBlue;
-  border-color: $darkBlue;
+	border-color: $darkBlue;
+	cursor: pointer;
 }
 
 h1 {

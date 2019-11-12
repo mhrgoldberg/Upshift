@@ -140,7 +140,7 @@ class SignUpForm extends React.Component {
 
             <br />
 
-            <h3> 
+            {/* <h3> 
               Create some fitness goals! 
             </h3>
 
@@ -173,7 +173,7 @@ class SignUpForm extends React.Component {
                 onChange={this.update('goal_3')} 
                 value={this.state.goal3}
               />
-            </label>
+            </label> */}
 
             <br />
 
