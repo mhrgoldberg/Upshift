@@ -37,32 +37,32 @@ form input:focus {
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  font-size: 14px;
+  font-size: 16px;
   color: grey;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  font-size: 14px;
+  font-size: 16px;
   color: grey;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  font-size: 14px;
+  font-size: 16px;
   color: grey;
 }
 :-moz-placeholder { /* Firefox 18- */
-  font-size: 14px;
+  font-size: 16px;
   color: grey;
   opacity: 1;
 }
 
 form select {
   border-radius: 5px;
-  border: 1px solid $strava-mid-orange;
-  background: $strava-mid-orange;
-  color: $white;
+  border: 1px solid rgba(128, 128, 128, 0.582);
+  background: rgba(14, 13, 13, 0.932);
+  color: grey;
   display: block;
   margin: 0 auto;
   padding: 10px;
-  font-size: 20px;
+  font-size: 16px;
   width: 304px;
   height: 44px;
   cursor: pointer;
@@ -110,7 +110,7 @@ form select {
 }
 
 .h2-form{
-  color: $strava-mid-orange;
+  color: $white;
   background-color: rgba(14, 13, 13, 0.932);
   font-size: 40px;
   font-weight: 900;
