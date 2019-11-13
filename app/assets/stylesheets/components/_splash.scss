@@ -5,9 +5,8 @@
   height: 100vh;
   width: 100vw;
   flex-direction: row;
-  box-sizing: border-box;
-  background-size: unset;
-  position: relative;
+  // background-size: unset;
+    // position: relative;
   overflow: hidden;
   background-image: asset-url("2_women_splash.jpg");
   -webkit-background-size: cover;
@@ -18,9 +17,10 @@
 }
 
 .splash h2{
-  top: 50px;
   color: $strava-orange;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 70px;
+  margin-top: 5%;
+  font-weight: bold;
+  font-size: 34px;
 }

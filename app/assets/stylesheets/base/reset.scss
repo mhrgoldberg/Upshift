@@ -42,6 +42,15 @@ input[type="submit"] {
   cursor: hand;
 }
 
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+
+
 /* Clearfix */
 
 .group:after {
@@ -49,3 +58,4 @@ input[type="submit"] {
   clear: both;
   display: table;
 }
+

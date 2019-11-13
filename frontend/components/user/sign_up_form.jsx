@@ -42,7 +42,7 @@ class SignUpForm extends React.Component {
     </ul>
             
     return (
-      <div className="background">
+      <div className="background-signup">
         <div className="form">
 
           <h2 className="h2-form">Sign Up</h2>

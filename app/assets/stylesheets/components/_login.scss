@@ -8,3 +8,17 @@
   margin: 0 auto;
   margin-top: 100px;
 }
+
+.background-login{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  // flex-direction: row;
+  // box-sizing: border-box;
+  // background-size: unset;
+  background-image: asset-url("cycling_splash.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

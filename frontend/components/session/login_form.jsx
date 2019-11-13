@@ -39,7 +39,7 @@ class LoginForm extends React.Component {
       </ul>
             
     return (
-      <div className="background">
+      <div className="background-login">
         <div className="login-form">
           <h2 className="h2-form">Log In</h2>
           <div className="errors">{err}</div>

@@ -1,0 +1,21 @@
+
+.not-found {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 8%;
+  color: $strava-orange;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.not-found-background {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  background-size: 100% 100%;
+  overflow: hidden;
+  background-image: asset-url("police_line.jpg");
+
+  
+}

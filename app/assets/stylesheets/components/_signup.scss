@@ -3,7 +3,7 @@ form button {
   font-size: 24px;
   background-color:$strava-orange;
   border-radius: 5px;
-  width: 280px;
+  width: 286px;
   height: 30px;
   display: block;
   margin: 0 auto;
@@ -36,8 +36,8 @@ form select {
   margin: 0 auto;
   padding: 5px;
   font-size: 20px;
-  width: 300px;
-  height: 37px;
+  width: 304px;
+  height: 44px;
 }
 
 // form textarea {
@@ -56,24 +56,24 @@ form select {
   background-color: rgba(14, 13, 13, 0.774);
   border-radius: 8px;
   width: 500px;
-  height: 700px;
+  height: 750px;
   // justify-content: center;
   margin: 0 auto;
   margin-top: 100px;
+  margin-bottom: 100px;
 }
 
-.background{
+.background-signup{
   display: flex;
-  height: 100vh;
-  width: 100vw;
-  flex-direction: row;
-  // box-sizing: border-box;
-  background-size: unset;
-  background-image: asset-url("cycling_splash.jpg");
+  // background-size: 100% 100%;
+  height: 100%;
+  width: 100%; 
+  // overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: asset-url("signup.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
 }
 
 .errors ul li{
@@ -88,4 +88,11 @@ form select {
   font-weight: 700;
   padding: 15px;
   border-radius: inherit;
+}
+
+
+@media screen and (max-height:850px){
+  .background-signup {
+    height: initial;
+  }
 }
