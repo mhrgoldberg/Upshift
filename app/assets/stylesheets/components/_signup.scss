@@ -1,10 +1,10 @@
 form button {
   color: $white;
-  font-size: 14px;
-  background-color:$blue;
+  font-size: 24px;
+  background-color:$strava-orange;
   border-radius: 5px;
-  width: 100px;
-  padding: 5px;
+  width: 280px;
+  height: 30px;
   display: block;
   margin: 0 auto;
 }
@@ -16,41 +16,50 @@ form input {
 	flex: 1;
   background-color: $white;
 	padding: 5px;
-  border: 4px solid $blue;
+  border: 2px solid $strava-light-orange;
   border-radius: 5px;
   margin: 5px;
   display: block;
+  width: 290px;
+  height: 30px;
   margin: 0 auto;
   font-size: 20px;
+  // width: 20px;
 }
 
 form select {
   border-radius: 5px;
-  border: 4px solid $blue;
+  border: 2px solid $strava-mid-orange;
+  background: $strava-mid-orange;
+  color: $white;
   display: block;
   margin: 0 auto;
+  padding: 5px;
   font-size: 20px;
+  width: 300px;
+  height: 37px;
 }
 
-form textarea {
-  border-radius: 5px;
-  border: 4px solid $blue;
-  background-color: $white;
-  width: 80%;
-  height: 100px;
-  display: block;
-  margin: 0 auto;
-  font-size: 14px;
-}
+// form textarea {
+//   border-radius: 5px;
+//   border: 4px solid $strava-orange;
+//   background-color: $white;
+//   width: 80%;
+//   height: 100px;
+//   display: block;
+//   margin: 0 auto;
+//   font-size: 14px;
+// }
 
 .form {  
 
   background-color: rgba(14, 13, 13, 0.774);
   border-radius: 8px;
   width: 500px;
-  height: 650px;
-  justify-content: center;
+  height: 700px;
+  // justify-content: center;
   margin: 0 auto;
+  margin-top: 100px;
 }
 
 .background{
@@ -58,7 +67,7 @@ form textarea {
   height: 100vh;
   width: 100vw;
   flex-direction: row;
-  box-sizing: border-box;
+  // box-sizing: border-box;
   background-size: unset;
   background-image: asset-url("cycling_splash.jpg");
   -webkit-background-size: cover;
@@ -67,10 +76,16 @@ form textarea {
   background-size: cover;
 }
 
-h2{
+.errors ul li{
   color: $white;
-  background-color: rgba(14, 13, 13, 0.932);
-  padding: 10px;
-  border-radius: inherit;
+  text-align: center;
+}
 
+.h2-form{
+  color: $strava-mid-orange;
+  background-color: rgba(14, 13, 13, 0.932);
+  font-size: 30px;
+  font-weight: 700;
+  padding: 15px;
+  border-radius: inherit;
 }

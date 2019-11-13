@@ -1,0 +1,39 @@
+nav{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+	padding: 10px 0;
+  border-bottom: 1px solid lightgray;
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 55px;
+}
+
+
+.logo{
+  height: 50px;
+  width: 50px;
+  background-size: 50px 50px;
+  background-image: asset-url("strava-logo.png");
+  // margin-left: 10%;
+}
+
+.profile_pic{
+  height: 40px;
+  width: 40px;
+  background-size: 40px 40px;
+  border-radius: 50%;
+  margin-top: 5px;
+  background-image: asset-url("dummy-profile-pic.png");
+  border: solid lightgray 1px;
+}
+
+.r-side-buttons{
+  margin-top: 5px;
+  display: flex;
+}
+
+.r-side-buttons button {
+  margin-top: 10px;
+  margin-left: 10px;
+}

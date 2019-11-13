@@ -35,9 +35,9 @@ class SignUpForm extends React.Component {
   render() {
     const { errors } = this.props;
 
-    const err = <ul>
+    const err = <ul className="errors">
       { errors.map( (error, i) => {
-        return <li key='i'>{error}</li>
+        return <li key={i}>{error}</li>
       })}
     </ul>
             
@@ -45,7 +45,7 @@ class SignUpForm extends React.Component {
       <div className="background">
         <div className="form">
 
-          <h2>Sign Up</h2>
+          <h2 className="h2-form">Sign Up</h2>
           <br />
           <div className="errors">{err}</div>
 
@@ -117,7 +117,7 @@ class SignUpForm extends React.Component {
                 value={this.state.gender} 
                 onChange={this.update('gender')}
               >
-                <option>gender</option>
+                <option>Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>

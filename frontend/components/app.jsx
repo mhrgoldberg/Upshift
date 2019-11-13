@@ -3,14 +3,13 @@ import { Route } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './user/signup_form_container'
-import GreetingContainer from './session/greeting_container'
+import NavBarContainer from './nav_bar/nav_bar_container'
 import Splash from "./splash";
 
 const App = () => (
   <div>
     <header>
-      <h1>upShift</h1>
-      <GreetingContainer />
+      <NavBarContainer />
     </header>
     <div className="main-content">
       <AuthRoute path="/login" component={LoginFormContainer} />

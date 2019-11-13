@@ -1,6 +1,5 @@
 button {
-	background-color: $blue;
-	border-color: $darkBlue;
+	background-color: $strava-orange;
 	color: white;
 	font-weight: bold;
 	padding: 7px 9px;
@@ -9,11 +8,13 @@ button {
 	text-transform: uppercase;
 	font-size: 11px;
 	text-align: center;
+	height: 15px;
+	width: 42px;
 }
 
 button:hover {
-	background-color: $darkBlue;
-	border-color: $darkBlue;
+	background-color: $strava-light-orange;
+
 	cursor: pointer;
 }
 
