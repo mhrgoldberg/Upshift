@@ -4,12 +4,13 @@ nav{
   flex-direction: row;
   margin-right: 10%;
   margin-left: 10%;
-  height: 55px;
-  margin-top: 5px;
+  height: 100%;
+  align-items: center;
 }
 
 header{
   border-bottom: 1px solid lightgray;
+  height: 7vh;
 }
 
 .logo{
@@ -30,11 +31,29 @@ header{
 }
 
 .r-side-buttons{
-  margin-top: 5px;
+  // margin-top: 5px;
   display: flex;
 }
 
 .r-side-buttons button {
-  margin-top: 5px;
+  // margin-top: 5px;
   margin-left: 10px;
+}
+
+.left-side{
+  display: flex;
+  flex-direction: row;
+}
+
+.left-side h1{
+  font-size: 30px;
+  color: $strava-orange;
+  margin-top: 7px;
+  font-weight: 900;
+}
+
+@media screen and (max-height:700px){
+  header {
+    height: 55px;
+  }
 }

@@ -2,9 +2,10 @@
 
 .splash {
   display: flex;
-  height: 100vh;
+  flex: 1 0 auto;
+  flex-direction: column;
+  height: 93vh;
   width: 100vw;
-  flex-direction: row;
   // background-size: unset;
     // position: relative;
   overflow: hidden;
@@ -23,4 +24,77 @@
   margin-top: 5%;
   font-weight: bold;
   font-size: 34px;
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100vw;
+  height: 150px;
+  background: #2d2e2cd0;
+
+}
+
+
+.footer-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 150px;
+
+}
+
+.right-side-footer{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 30px;
+}
+
+footer a{
+  display: flex;
+  flex-direction: column;
+  color: lightgrey;
+  padding: 10px;
+  margin-top: 5px;
+  background: grey;
+  border-radius: 3px;
+  text-align: center;
+  margin-top: 10px;
+
+}
+
+footer h1{
+  color: lightgrey;
+}
+
+footer h3{
+  color: lightgrey;
+  margin: 10px;
+
+  text-align: center;
+
+}
+
+.splash-button {
+    color: $white;
+    font-size: 30px;
+    background-color:$strava-orange;
+    border-radius: 10px;
+    width: 250px;
+    height: 60px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
 }
