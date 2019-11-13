@@ -106,7 +106,7 @@ class SignUpForm extends React.Component {
               <input type="number" 
                 onChange={this.update('age')} 
                 value={this.state.age}
-                placeholder="age"
+                placeholder="Age"
               />
             </label>
 
@@ -137,43 +137,6 @@ class SignUpForm extends React.Component {
                 <option value="multisport">Multisport</option>
               </select>
             </label>
-
-            <br />
-
-            {/* <h3> 
-              Create some fitness goals! 
-            </h3>
-
-            <label>
-              First Goal:
-              <br />
-              <textarea 
-                onChange={this.update('goal_1')} 
-                value={this.state.goal1}
-              />
-            </label>
-
-            <br />
-
-            <label>
-              Second Goal:
-              <br />
-              <textarea 
-                onChange={this.update('goal_2')} 
-                value={this.state.goal2}
-              />
-            </label>
-
-            <br />
-
-            <label>
-              Third Goal:
-              <br />
-              <textarea 
-                onChange={this.update('goal_3')} 
-                value={this.state.goal3}
-              />
-            </label> */}
 
             <br />
 

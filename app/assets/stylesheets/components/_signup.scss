@@ -14,30 +14,58 @@ form label {
 
 form input {
 	flex: 1;
-  background-color: $white;
-	padding: 5px;
-  border: 2px solid $strava-light-orange;
+  background-color: rgba(14, 13, 13, 0.932);
+	padding: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.582);
   border-radius: 5px;
   margin: 5px;
   display: block;
-  width: 290px;
-  height: 30px;
+  width: 282px;
+  height: 22px;
   margin: 0 auto;
   font-size: 20px;
+  color: white;
+  cursor: text;
   // width: 20px;
+}
+
+form input:focus {
+  background-color: $white;
+  color: black;
+  border: 1px solid rgba(14, 13, 13, 0.486);
+  box-shadow: 0px 0px 5px 3px $white;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 14px;
+  color: grey;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 14px;
+  color: grey;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: 14px;
+  color: grey;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-size: 14px;
+  color: grey;
+  opacity: 1;
 }
 
 form select {
   border-radius: 5px;
-  border: 2px solid $strava-mid-orange;
+  border: 1px solid $strava-mid-orange;
   background: $strava-mid-orange;
   color: $white;
   display: block;
   margin: 0 auto;
-  padding: 5px;
+  padding: 10px;
   font-size: 20px;
   width: 304px;
   height: 44px;
+  cursor: pointer;
 }
 
 // form textarea {
@@ -84,8 +112,8 @@ form select {
 .h2-form{
   color: $strava-mid-orange;
   background-color: rgba(14, 13, 13, 0.932);
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: 900;
   padding: 15px;
   border-radius: inherit;
 }

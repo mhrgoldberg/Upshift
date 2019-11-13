@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom'
 
 class NavBar extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.signUpLink = this.signUpLink.bind(this);
+    this.loginLink = this.loginLink.bind(this);
+  }
+
+  signUpLink() {
+    this.props.clearSessionErrors();
+    this.props.history.push("/signup");
+  }
+
+  loginLink() {
+    this.props.clearSessionErrors();
+    this.props.history.push("/login");
+  }
+
   loggedInBar() {
     return (
       <div className="r-side-buttons">
@@ -15,12 +31,8 @@ class NavBar extends React.Component {
   loggedOutBar() {
     return (
       <div className="r-side-buttons">
-        <Link to="/signup">
-          <button>Sign Up</button>
-        </Link>
-        <Link to="/login">
-          <button>Log In</button>
-        </Link>
+          <button onClick={this.signUpLink}>Sign Up</button>
+          <button onClick={this.loginLink}>Log In</button>
       </div>
     )
   }
@@ -28,9 +40,9 @@ class NavBar extends React.Component {
   logInFormButtons() {
     return (
       <div className="r-side-buttons">
-        <Link to="/signup">
-          <button>Sign Up</button>
-        </Link>
+        {/* <Link to="/signup"> */}
+          <button onClick={this.signUpLink}>Sign Up</button>
+        {/* </Link> */}
       </div>
     )
   }
@@ -39,7 +51,7 @@ class NavBar extends React.Component {
     return (
       <div className="r-side-buttons">
         <Link to="/login">
-          <button>Log In</button>
+          <button onClick={this.loginLink}>Log In</button>
         </Link>
       </div>
     )
