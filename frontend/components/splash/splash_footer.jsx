@@ -8,8 +8,8 @@ const SplashFooter = () => (
       <h3>
         Follow
       </h3>
-      <a href="https://github.com/mitchellreiss">GitHub</a>
-      <a href="https://www.linkedin.com/in/mitchell-reiss/">LinkedIn</a>
+        <a href="https://github.com/mitchellreiss">GitHub</a>
+        <a href="https://www.linkedin.com/in/mitchell-reiss/">LinkedIn</a>
     </section>
     <section className="right-side-footer">
       <h1>

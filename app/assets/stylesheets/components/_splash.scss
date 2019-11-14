@@ -54,6 +54,17 @@ footer {
 
 }
 
+.left-side-footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left-side-footer a{
+  height: 20px;
+  margin: 5px;
+}
+
 .right-side-footer{
   display: flex;
   flex-direction: column;
@@ -94,7 +105,23 @@ footer h3{
     width: 250px;
     height: 60px;
     display: block;
+    margin-right: 10%;
+    margin-left: auto;
+    margin-top: 20%;
+}
+
+// .follow-buttons {
+//   display: flex;
+//   flex-direction: row;
+// }
+
+@media screen and (max-width:1150px){
+  .splash-button{
     margin-right: auto;
     margin-left: auto;
     margin-top: 5%;
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+  }
 }
