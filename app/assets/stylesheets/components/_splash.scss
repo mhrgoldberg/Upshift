@@ -129,4 +129,8 @@ footer h3{
   }
 }
 
-
+@media screen and (max-height:700px){
+  .splash{
+    height: 92vh;
+  }
+}
