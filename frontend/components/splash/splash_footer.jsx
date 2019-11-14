@@ -12,14 +12,11 @@ const SplashFooter = () => (
         <a href="https://www.linkedin.com/in/mitchell-reiss/">LinkedIn</a>
     </section>
     <section className="right-side-footer">
-      <h1>
-        UpShift
-      </h1>
-      <h3>
-        <Link to="/signup">
+        
+        {/* <Link to="/signup">
         Start your journey today!
-        </Link>
-      </h3>
+        </Link> */}
+
       
     </section>
     </div>

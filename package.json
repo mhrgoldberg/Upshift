@@ -25,8 +25,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --mode=development --watch"
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -38,5 +37,9 @@
   "bugs": {
     "url": "https://github.com/mitchellreiss/upshift/issues"
   },
-  "homepage": "https://github.com/mitchellreiss/upshift#readme"
+  "homepage": "https://github.com/mitchellreiss/upshift#readme",
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.9.0"
+  }
 }
