@@ -21,19 +21,19 @@ user1 = User.create(
 
 Route.destroy_all
 
-route_data1 = File.read("/Users/Mitchell/Desktop/app_academy/aa-projects/strava_clone/upshift/app/assets/gpx_data/bike_ride_gpx.xml")
+# route_data1 = File.read("/Users/Mitchell/Desktop/app_academy/aa-projects/strava_clone/upshift/app/assets/gpx_data/bike_ride_gpx.xml")
 
 
-route1 = Route.create(
-  user_id: user1.id,
-  distance: 20,
-  title: "My First Ride",
-  route_type: "ride",
-  elevation_gain: 832,
-  elevation_loss: 832,
-  max_elevation: 200,
-  data: route_data1
-)
+# route1 = Route.create(
+#   user_id: user1.id,
+#   distance: 20,
+#   title: "My First Ride",
+#   route_type: "ride",
+#   elevation_gain: 832,
+#   elevation_loss: 832,
+#   max_elevation: 200,
+#   data: route_data1
+# )
 
 
 

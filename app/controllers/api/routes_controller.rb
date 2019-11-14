@@ -5,14 +5,14 @@ class Api::RoutesController < ApplicationController
   end
 
   def show
-    @route = Route.find_by(id: params[id])
+    @route = Route.find(id: params[:id])
   end
 
   def create
     @route = Route.new(route_params)
     @route.user_id = current_user.id
     if @route.save
-      render :show
+      render :showq
     else
       render json: @route.errors.full_messages, status: 422
     end
