@@ -103,7 +103,7 @@ footer h3{
 
 .splash-button {
     color: $white;
-    font-size: 30px;
+    font-size: 24px;
     background-color:$strava-orange;
     border-radius: 10px;
     width: 250px;
@@ -112,6 +112,7 @@ footer h3{
     position: absolute;
     top: 30%;
     left: 70%;
+    text-transform: none;
 }
 
 .splash a{

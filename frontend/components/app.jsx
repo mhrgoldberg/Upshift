@@ -4,6 +4,7 @@ import { AuthRoute } from '../util/route_util';
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './user/signup_form_container'
 import NavBarContainer from './nav_bar/nav_bar_container'
+import CreateRoute from './route/create_route'
 import Splash from "./splash/splash";
 import NotFound from './not_found'
 
@@ -16,6 +17,7 @@ const App = () => (
       <Switch>
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
+        <Route path="/newroute" component={CreateRoute} />
         <Route exact path="/" component={Splash} />
         <Route component={NotFound} />
       </Switch>

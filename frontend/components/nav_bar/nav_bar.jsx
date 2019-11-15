@@ -31,7 +31,7 @@ class NavBar extends React.Component {
   loggedOutBar() {
     return (
       <div className="r-side-buttons">
-          
+          <button onClick={this.signUpLink}>Sign Up</button>
           <button onClick={this.loginLink}>Log In</button>
       </div>
     )
