@@ -7,7 +7,7 @@ class CreateRoute extends React.Component {
     this.state = {
       workout_mode: "WALKING",
       waypoints: [],
-      // elevation: []
+      distance: 0
     }
     this.addWaypoints = this.addWaypoints.bind(this);
     this.calcRoute = this.calcRoute.bind(this);
@@ -49,8 +49,11 @@ class CreateRoute extends React.Component {
     this.directionsService.route(request, (result, status) => {
       if (status == 'OK') {
         this.directionsRenderer.setDirections(result);
+        // Set distance to sum of all distances converted from meters to miles
+        this.setState({distance: result.routes[0].legs.map( leg => (
+          leg.distance.value)).reduce((a,b) => a + b, 0)/1609.344});
       }
-    })
+    });
   }
 
   
@@ -64,18 +67,18 @@ class CreateRoute extends React.Component {
     this.setState({ waypoints }); 
   }
 
-  // getElevation(location, elevator) {
-  //   elevator.getElevationForLocations({
-  //     locations: [location]
-  //   }, (results, status) => {
+  getElevation(location, elevator) {
+    elevator.getElevationForLocations({
+      locations: [location]
+    }, (results, status) => {
 
-  //     if (status === 'OK') {
-  //       if (results[0]) {
-  //           results[0].elevation 
-  //       } 
-  //     }
-  //   });
-  // }
+      if (status === 'OK') {
+        if (results[0]) {
+            results[0].elevation 
+        } 
+      }
+    });
+  }
 
 
   render() {
