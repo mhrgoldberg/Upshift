@@ -6,12 +6,15 @@ class CreateRoute extends React.Component {
     super(props);
     this.state = {
       workout_mode: "WALKING",
-      markerTrack: []
+      waypoints: [],
+      // elevation: []
     }
-    this.addMarker = this.addMarker.bind(this);
+    this.addWaypoints = this.addWaypoints.bind(this);
     this.calcRoute = this.calcRoute.bind(this);
-    // this.drawPolyline = this.drawPolyline.bind(this);
+    this.getElevation = this.getElevation.bind(this);
+
   }
+
 
   componentDidMount() {
     const mapOptions = {
@@ -20,19 +23,24 @@ class CreateRoute extends React.Component {
     };
     this.directionsService = new google.maps.DirectionsService();
     this.directionsRenderer = new google.maps.DirectionsRenderer();
+    this.directionsRenderer.setOptions({
+      preserveViewport: true
+    })
     this.map = new google.maps.Map(this.refs.map, mapOptions);
     this.directionsRenderer.setMap(this.map);
     google.maps.event.addListener(this.map, 'click', (e) => {
-      this.addMarker(e.latLng);
+      this.addWaypoints(e.latLng);
       this.calcRoute()
     });
   }
 
   calcRoute() {
     const request = {
-      origin: this.state.markerTrack[0].position,
-      destination: this.state.markerTrack[this.state.markerTrack.length-1].position,
+      origin: this.state.waypoints[0].location,
+      destination: this.state.waypoints[this.state.waypoints.length-1].location,
+      waypoints: this.state.waypoints.slice(1, -1),
       travelMode: this.state.workout_mode,
+      optimizeWaypoints: false,
       avoidFerries: true,
       avoidHighways: true,
       avoidTolls: true,
@@ -45,25 +53,30 @@ class CreateRoute extends React.Component {
     })
   }
 
-  addMarker(latLng) {
-    let marker = new google.maps.Marker({
-        map: this.map,
-        position: latLng,
+  
+
+  addWaypoints(latLng) {
+    let waypoints = [...this.state.waypoints];
+    waypoints.push({
+      location: {lat: latLng.lat(), lng: latLng.lng()},
+      // stopover: true
     });
-    let markerTrack = [...this.state.markerTrack];
-    markerTrack.push(marker);
-    this.setState({ markerTrack });
+    this.setState({ waypoints }); 
   }
 
-  // drawPolyline() {
-  //   let road = new google.maps.Polyline({
-  //     path: this.markerTrack,
-  //     strokeColor: "#FF0000",
-  //     strokeOpacity: 1,
-  //     strokeWeight: 2
+  // getElevation(location, elevator) {
+  //   elevator.getElevationForLocations({
+  //     locations: [location]
+  //   }, (results, status) => {
+
+  //     if (status === 'OK') {
+  //       if (results[0]) {
+  //           results[0].elevation 
+  //       } 
+  //     }
   //   });
-  //   road.setMap(this.map);
   // }
+
 
   render() {
     return (
