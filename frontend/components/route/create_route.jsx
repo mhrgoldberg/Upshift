@@ -1,12 +1,14 @@
 import React from 'react';
 import RouteDataDisplay from './route_data_display';
+import RouteOptionsMenu from './route_options_menu';
+import RouteSaveModal from './route_save_modal';
 
 class CreateRoute extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      route_type: "WALKING",
+      route_type: "Running",
       waypoints: [],
       distance: 0,
       elevation_gain: 0,
@@ -23,7 +25,7 @@ class CreateRoute extends React.Component {
     this.calcElevationLoss = this.calcElevationLoss.bind(this);
     this.calcMaxElevation = this.calcMaxElevation.bind(this);
     this.calcAllElevationStats = this.calcAllElevationStats.bind(this);
-
+    this.save = this.save.bind(this);
   }
 
 
@@ -48,13 +50,17 @@ class CreateRoute extends React.Component {
     });
   }
 
+  save(e) {
+    e.preventDefault();
+    this.props.openModal('saveRoute');
+  }
 
   setRouteTypeToRunning() {
-    this.setState( { route_type: "WALKING" } )
+    this.setState( { route_type: "Running" } )
   }
 
   setRouteTypeToCycling() {
-    this.setState( { route_type: "BICYCLING" } )
+    this.setState( { route_type: "Cycling" } )
   }
 
   calcRoute() {
@@ -62,7 +68,7 @@ class CreateRoute extends React.Component {
       origin: this.state.waypoints[0].location,
       destination: this.state.waypoints[this.state.waypoints.length-1].location,
       waypoints: this.state.waypoints.slice(1, -1),
-      travelMode: this.state.route_type,
+      travelMode: this.state.route_type === 'running' ? 'WALKING' : 'BICYCLING',
       optimizeWaypoints: false,
       avoidFerries: true,
       avoidHighways: true,
@@ -136,8 +142,15 @@ class CreateRoute extends React.Component {
   render() {
     return (
       <div>
+        <RouteSaveModal routeInfo={this.state} />
+        <RouteOptionsMenu 
+          save={this.save}
+          setRouteTypeToRunning={this.setRouteTypeToRunning}
+          setRouteTypeToCycling={this.setRouteTypeToCycling}
+        />
       <div id="map-container" ref='map' /> 
       <RouteDataDisplay 
+        route_type={this.state.route_type}
         distance={this.state.distance}
         elevation_gain={this.state.elevation_gain}
         elevation_loss={this.state.elevation_loss}

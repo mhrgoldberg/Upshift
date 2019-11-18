@@ -12,6 +12,17 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
   />
 );
 
+const LoggedIn = ({ component: Component, path, loggedIn, exact }) => (
+  <Route
+    path={path}
+    exact={exact}
+    render={props =>
+      loggedIn ? <Component {...props} /> : <Redirect to="/" />
+    }
+  />
+);
+
+
 const mapStateToProps = state => {
   return { loggedIn: Boolean(state.session.id) };
 };
@@ -21,4 +32,11 @@ export const AuthRoute = withRouter(
     mapStateToProps,
     null
   )(Auth)
+);
+
+export const LoggedInRoute = withRouter(
+  connect(
+    mapStateToProps,
+    null
+  )(LoggedIn)
 );

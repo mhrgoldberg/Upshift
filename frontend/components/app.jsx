@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, LoggedInRoute } from '../util/route_util';
 import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './user/signup_form_container'
 import NavBarContainer from './nav_bar/nav_bar_container'
-import CreateRoute from './route/create_route'
+import CreateRouteContainer from './route/create_route_container'
 import Splash from "./splash/splash";
 import NotFound from './not_found'
 
@@ -17,7 +17,7 @@ const App = () => (
       <Switch>
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
-        <Route path="/newroute" component={CreateRoute} />
+        <LoggedInRoute path="/newroute" component={CreateRouteContainer} />
         <Route exact path="/" component={Splash} />
         <Route component={NotFound} />
       </Switch>

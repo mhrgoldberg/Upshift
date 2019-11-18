@@ -48,7 +48,6 @@ class SignUpForm extends React.Component {
           <h2 className="h2-form">Sign Up</h2>
           <br />
           <div className="errors">{err}</div>
-
           <br />
 
           <form onSubmit={this.handleSubmit}>
