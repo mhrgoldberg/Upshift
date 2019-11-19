@@ -68,7 +68,7 @@ class CreateRoute extends React.Component {
       origin: this.state.waypoints[0].location,
       destination: this.state.waypoints[this.state.waypoints.length-1].location,
       waypoints: this.state.waypoints.slice(1, -1),
-      travelMode: this.state.route_type === 'running' ? 'WALKING' : 'BICYCLING',
+      travelMode: this.state.route_type === 'Running' ? 'WALKING' : 'BICYCLING',
       optimizeWaypoints: false,
       avoidFerries: true,
       avoidHighways: true,
@@ -148,14 +148,14 @@ class CreateRoute extends React.Component {
           setRouteTypeToRunning={this.setRouteTypeToRunning}
           setRouteTypeToCycling={this.setRouteTypeToCycling}
         />
-      <div id="map-container" ref='map' /> 
-      <RouteDataDisplay 
-        route_type={this.state.route_type}
-        distance={this.state.distance}
-        elevation_gain={this.state.elevation_gain}
-        elevation_loss={this.state.elevation_loss}
-        max_elevation={this.state.max_elevation}
-      />
+        <div id="map-container" ref='map' /> 
+        <RouteDataDisplay 
+          route_type={this.state.route_type}
+          distance={this.state.distance}
+          elevation_gain={this.state.elevation_gain}
+          elevation_loss={this.state.elevation_loss}
+          max_elevation={this.state.max_elevation}
+        />
       </div>
     )
   }
