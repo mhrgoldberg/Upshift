@@ -1,0 +1,66 @@
+.map-img {
+  width: 250px;
+  height: 250px;
+}
+
+.index-item {
+  width: 250px;
+  height: 400px;
+  background: #f7f7f7;
+  color: #2d2d32;
+  margin: 15px;
+}
+
+.route-index {
+  margin-top: 10px;
+}
+
+.index-data {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.route-index ul {
+  display: flex;
+  justify-content: space-evenly;
+  flex: auto;
+  flex-flow: wrap;
+  margin-right: 8%;
+  margin-left: 8%;
+
+  
+}
+
+.index-item h3{
+  margin: 5px;
+  color: #007fb6;
+}
+
+.routes-sub-header{
+  height: 15vh;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-bottom: 1px solid #ccccd1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 41px;
+    color: #2d2d32;
+
+  }
+  a {
+    width: fit-content;
+  }
+
+  button{
+    width: 150px;
+    height: 30px;
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+}

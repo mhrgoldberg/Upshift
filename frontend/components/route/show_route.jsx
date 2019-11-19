@@ -1,5 +1,5 @@
 import React from 'react';
-import RouteIndex from './route_index';
+import { Link } from 'react-router-dom';
 
 class ShowRoute extends React.Component {
 
@@ -68,32 +68,38 @@ class ShowRoute extends React.Component {
     const {title, route_type, distance, elevation_gain, elevation_loss, max_elevation} = this.props.route;
 
     return (
-      <div className="show-container">
-        <div id="map" ref='map' />
-        <div className="show-route-data">
-          <h2>{title}</h2>
-          <ul>
-            <li key="route-type">
-              <div className="data">{route_type}</div>
-              <div className="data-title">Route Type</div>
-            </li>
-            <li key="dist">
-              <div className="data">{distance.toFixed(2)} mi</div>
-              <div className="data-title">Distance</div>
-            </li>
-            <li key="gain">
-              <div className="data">{elevation_gain} ft</div>
-              <div className="data-title">Elevation Gain</div>
-            </li>
-            <li key="loss">
-              <div className="data">{elevation_loss} ft</div>
-              <div className="data-title">Elevation Loss</div>
-            </li>
-            <li key="max">
-              <div className="data">{max_elevation} ft</div>
-              <div className="data-title">Max Elevation</div>
-            </li>
-          </ul>
+      <div className="show">
+        <div className="routes-sub-header">
+        <h1>{route_type} Route</h1>
+        <Link to="/routes"><button>All Routes</button></Link>
+        </div>
+        <div className="show-container">
+          <div id="map" ref='map' />
+          <div className="show-route-data">
+            <h2>{title}</h2>
+            <ul>
+              <li key="route-type">
+                <div className="data">{route_type}</div>
+                <div className="data-title">Route Type</div>
+              </li>
+              <li key="dist">
+                <div className="data">{distance.toFixed(2)} mi</div>
+                <div className="data-title">Distance</div>
+              </li>
+              <li key="gain">
+                <div className="data">{elevation_gain} ft</div>
+                <div className="data-title">Elevation Gain</div>
+              </li>
+              <li key="loss">
+                <div className="data">{elevation_loss} ft</div>
+                <div className="data-title">Elevation Loss</div>
+              </li>
+              <li key="max">
+                <div className="data">{max_elevation} ft</div>
+                <div className="data-title">Max Elevation</div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     )

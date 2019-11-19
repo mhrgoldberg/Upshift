@@ -20,7 +20,7 @@ const App = () => (
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <LoggedInRoute path="/newroute" component={CreateRouteContainer} />
-        <LoggedInRoute path="/showroute/:routeId" component={ShowRouteContainer} />
+        <LoggedInRoute path="/route/:routeId" component={ShowRouteContainer} />
         <LoggedInRoute path="/routes" component={RouteIndexContainer} />
         <Route exact path="/" component={Splash} />
         <Route component={NotFound} />

@@ -77,7 +77,7 @@ class NavBar extends React.Component {
           <div className="logo"></div>
           <h1>UpShift</h1>
           </Link>
-
+          
         <div>
           {rSide}
         </div>

@@ -1,35 +1,19 @@
-// .show-page {
-//   display: flex;
-//   flex-direction: row;
-//   width: 100vw;
-//   height: 93vh;
-  
-// }
-// .show-map {
-//   width: 400px;
-
-// }
-// .show-map #show-map-container {
-//   left: 20%;
-//   width: 400px;
-//   height: 400px;
-// }
 
 .show-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 70vh;
-  margin: 10vh;
+  height: 60vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 10vh;
 }
 
 .show-route-data li{
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  margin-top: 10px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin: 15px;
   font-size: 16px;
 }
 
