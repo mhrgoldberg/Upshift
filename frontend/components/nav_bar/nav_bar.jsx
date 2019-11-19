@@ -57,12 +57,27 @@ class NavBar extends React.Component {
     )
   }
 
+  dashboardDropdown() {
+    return (
+      <div className="dropdown">
+      <p>Dashboard</p>
+      <i className="fas fa-caret-down"></i>
+        <div className="dropdown-content">
+          <Link to="/routes">Routes</Link>
+          <Link to="/newroute">New Route</Link>
+        </div>
+    </div>
+    )
+  }
+
   render() {
     const {currentUser, location} = this.props;
     let rSide = this.loggedOutBar();
+    let lSide = null;
 
     if (currentUser) {
       rSide = this.loggedInBar();
+      lSide = this.dashboardDropdown();
     } else {
       if (location.pathname === "/login"){
         rSide = this.logInFormButtons();
@@ -73,11 +88,13 @@ class NavBar extends React.Component {
 
     return(
       <nav>
-          <Link to="/" className="left-side">
-          <div className="logo"></div>
-          <h1>UpShift</h1>
-          </Link>
-          
+          <div className="left-side">
+            <Link to="/" >
+            <div className="logo"></div>
+            <h1>UpShift</h1>
+            </Link>
+            {lSide} 
+          </div>
         <div>
           {rSide}
         </div>

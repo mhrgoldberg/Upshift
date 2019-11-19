@@ -6,6 +6,9 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token
 
+  has_many :workouts
+  has_many :routes
+
   def self.generate_session_token 
     SecureRandom::urlsafe_base64(16)
   end 

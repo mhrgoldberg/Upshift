@@ -124,12 +124,9 @@ footer h3{
 //   flex-direction: row;
 // }
 
-@media screen and (max-width:1150px){
+@media screen and (max-width:900px){
   .splash-button{
-    left: 50%;
-    top: 10%;
-    width: 200px;
-    font-size: 25px;
+    visibility: hidden;
   }
   // .right-side-footer{
   //   display: none;

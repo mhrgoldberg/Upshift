@@ -42,17 +42,86 @@ header{
 .left-side{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  a{
+    display: flex;
+    flex-direction: row;
+  }
+
+  // p, i {
+  //   margin-top: 5px;
+  // }
+
+  p {
+    margin-left: 30px;
+    padding: 0 5px;
+    color: #565656;
+    font-weight: 500;
+    font-size: 18px;
+    align-items: center;
+  }
+  i {
+    margin: 0;
+    font-size: inherit;
+  }
 }
 
 .left-side h1{
   font-size: 30px;
   color: $strava-orange;
-  margin-top: 10px;
+  margin-top: 5px;
   font-weight: 900;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  height: 7vh;
+  cursor: pointer;
+}
+
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  top: 7vh;
+  left: 1.1vw;
+  border-bottom: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  position: absolute;
+  background: white;
+  min-width: 160px;
+  z-index: 1;
+  cursor: pointer;
 }
 
 @media screen and (max-height:700px){
   header {
     height: 10vh;
+  }
+  .dropdown{
+    height: 10vh;
+  }
+  .dropdown-content{
+    top: 10vh;
   }
 }
