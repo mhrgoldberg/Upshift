@@ -1,7 +1,11 @@
 class Api::WorkoutsController < ApplicationController
 
   def index
-    @workouts = current_user.workouts
+    if params[:user_id] == current_user.id
+      @workouts = current_user.workouts
+    else
+      @workouts = workouts.all
+    end
   end
   
   def show
