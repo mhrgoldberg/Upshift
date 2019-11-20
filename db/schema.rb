@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_214014) do
     t.integer "mood"
     t.integer "motivation"
     t.integer "quality"
-    t.integer "comment"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["route_id"], name: "index_workouts_on_route_id"

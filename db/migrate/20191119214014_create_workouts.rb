@@ -13,7 +13,7 @@ class CreateWorkouts < ActiveRecord::Migration[5.2]
       t.integer :mood
       t.integer :motivation
       t.integer :quality
-      t.integer :comment
+      t.text :comment
       t.timestamps
     end
   end
