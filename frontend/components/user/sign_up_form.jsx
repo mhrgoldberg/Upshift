@@ -13,9 +13,6 @@ class SignUpForm extends React.Component {
       age: "",
       gender: "",
       primary_sport: "",
-      goal_1: "",
-      goal_2: "",
-      goal_3: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -106,6 +103,7 @@ class SignUpForm extends React.Component {
                 onChange={this.update('age')} 
                 value={this.state.age}
                 placeholder="Age"
+                min="0"
               />
             </label>
 

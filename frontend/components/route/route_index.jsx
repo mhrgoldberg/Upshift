@@ -21,7 +21,7 @@ class RouteIndex extends React.Component {
       <div className="route-index">
         <div className="routes-sub-header">
           <h1>My Routes</h1>
-          <Link to="/newRoute"><button>Create New Route</button></Link>
+          <Link to="/route/new"><button>Create New Route</button></Link>
         </div>
         <ul>
           {this.props.routes.map( route => (

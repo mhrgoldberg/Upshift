@@ -9,6 +9,7 @@ import Splash from "./splash/splash";
 import NotFound from './not_found'
 import ShowRouteContainer from "./route/show_route_container";
 import RouteIndexContainer from "./route/route_index_container";
+import CreateWorkoutContainer from "./workouts/create_workout_container";
 
 const App = () => (
   <div className="outside-div">
@@ -19,9 +20,10 @@ const App = () => (
       <Switch>
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
-        <LoggedInRoute path="/newroute" component={CreateRouteContainer} />
+        <LoggedInRoute path="/route/new" component={CreateRouteContainer} />
         <LoggedInRoute path="/route/:routeId" component={ShowRouteContainer} />
         <LoggedInRoute path="/routes" component={RouteIndexContainer} />
+        <LoggedInRoute path="/workout/new" component={CreateWorkoutContainer} />
         <Route exact path="/" component={Splash} />
         <Route component={NotFound} />
       </Switch>

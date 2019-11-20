@@ -52,7 +52,11 @@ class CreateRoute extends React.Component {
 
   save(e) {
     e.preventDefault();
-    this.props.openModal('saveRoute');
+    if (this.state.waypoints.length > 1) {
+      this.props.openModal('saveRoute');
+    } else {
+      alert("Route must have at least two waypoints!")
+    }
   }
 
   setRouteTypeToRunning() {

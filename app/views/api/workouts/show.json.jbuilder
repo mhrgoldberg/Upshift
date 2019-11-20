@@ -1,1 +1,1 @@
-json.partial! 'api/routes/workout', workout: @workout
+json.partial! 'api/workouts/workout', workout: @workout

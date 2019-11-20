@@ -1,0 +1,38 @@
+
+.radio-group input[type=radio] {
+  position: absolute;
+  // visibility: hidden;
+  // display: none;
+  // opacity: 0;
+}
+
+.radio-group label {
+  color: $strava-orange;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 15px;
+}
+
+.radio-group input[type=radio]:checked + label{
+  color: $white;
+  background: $strava-orange;
+}
+
+.radio-group label + input[type=radio] + label {
+  border-left: solid 3px $strava-orange;
+}
+.radio-group {
+  border: solid 3px $strava-orange;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.subjective-radios {
+  display: inline-flex;
+  flex-direction: row;
+  align-content: space-between;
+  flex-flow: wrap;
+}

@@ -64,7 +64,7 @@ class NavBar extends React.Component {
       <i className="fas fa-caret-down"></i>
         <div className="dropdown-content">
           <Link to="/routes">Routes</Link>
-          <Link to="/newroute">New Route</Link>
+          <Link to="/route/new">New Route</Link>
         </div>
     </div>
     )
