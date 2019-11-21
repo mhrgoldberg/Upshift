@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchAllWorkouts, deleteWorkout } from '../../actions/workout_actions';
-import WorkoutIndex from './workout_index'
+import WorkoutIndex from './workout_index';
+import { withRouter } from 'react-router-dom'
 
 const mSTP = state => ({
   workouts: Object.values(state.entities.workouts),

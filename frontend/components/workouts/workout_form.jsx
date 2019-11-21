@@ -6,9 +6,10 @@ class WorkoutForm extends React.Component {
     super(props);
     this.state = {
       ...props.workout, 
-      hours: Math.floor(props.workout.duration/60), 
-      minutes: Math.floor(props.workout.duration%60), 
-      seconds: Math.floor(props.workout.duration%10)
+      hours: Math.floor(props.workout.duration/60) || "", 
+      minutes: Math.floor(props.workout.duration%60) || "", 
+      seconds: Math.floor(props.workout.duration%10) || "",
+      distance: 0
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +17,13 @@ class WorkoutForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllRoutes();
+    this.props.fetchAllRoutes()
+    .then(payload => {
+      payload.routes.forEach(route => {
+      if (route.id === this.state.route_id) {
+        this.setState({distance: route.distance})
+      };
+    })})
   }
 
   handleSubmit(e) {
@@ -62,7 +69,7 @@ class WorkoutForm extends React.Component {
   convertTime(hr, min, sec) {
     let time = hr*60;
     time += min;
-    time += sec/10;
+    time += sec/100;
     return time;
   }
 
