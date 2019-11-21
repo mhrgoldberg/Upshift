@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { createWorkout } from '../../actions/workout_actions';
 import WorkoutForm from './workout_form';
 import { fetchAllRoutes } from '../../actions/route_actions';
+import { withRouter } from 'react-router-dom';
 
 const mSTP = state => ({
   workout: {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 
 class WorkoutForm extends React.Component {
@@ -37,9 +38,11 @@ class WorkoutForm extends React.Component {
     delete newState["seconds"];
     newState["duration"] = duration;
     newState["user_id"] = this.props.currentUserId;
-    newState["avg_speed"] = newState["distance"] / newState["duration"];
+    newState["avg_speed"] = newState["distance"] / (newState["duration"] / 60);
     delete newState["distance"]
-    this.props.submitWorkout(newState);
+    this.props.submitWorkout(newState).then(workout => {
+      this.props.history.push(`/workouts`);
+    })
   }
 
   update(field) {
@@ -265,6 +268,6 @@ class WorkoutForm extends React.Component {
 
 }
 
-export default WorkoutForm;
+export default withRouter(WorkoutForm);
 
 

@@ -65,6 +65,8 @@ class NavBar extends React.Component {
         <div className="dropdown-content">
           <Link to="/routes">Routes</Link>
           <Link to="/route/new">New Route</Link>
+          <Link to="/workouts">Workouts</Link>
+          <Link to="/workout/new">New Workout</Link>
         </div>
     </div>
     )
