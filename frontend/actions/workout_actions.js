@@ -8,7 +8,7 @@ export const CLEAR_WORKOUT_ERRORS = "CLEAR_WORKOUT_ERRORS";
 
 const receiveAllWorkouts = payload => ({
   type: RECEIVE_ALL_WORKOUTS,
-  routes: payload.workouts
+  workouts: payload.workouts
 })
 
 const receiveWorkout = workout => ({

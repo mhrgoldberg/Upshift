@@ -26,7 +26,8 @@
     "test": "test"
   },
   "scripts": {
-    "postinstall": "webpack"
+    "postinstall": "webpack",
+    "webpack": "webpack --mode=development --watch"
   },
   "repository": {
     "type": "git",

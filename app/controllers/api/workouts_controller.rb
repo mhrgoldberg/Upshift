@@ -4,12 +4,13 @@ class Api::WorkoutsController < ApplicationController
     if params[:user_id] == current_user.id
       @workouts = current_user.workouts
     else
-      @workouts = workouts.all
+      @workouts = Workout.all
     end
   end
   
   def show
     @workout = Workout.find(params[:id])
+    @route = Route.find(@workout.route_id)
   end
 
   def create
@@ -23,7 +24,7 @@ class Api::WorkoutsController < ApplicationController
   end
   
   def update
-    @workout = current_user.workouts.find(parmas[:id])
+    @workout = current_user.workouts.find(params[:id])
     if @workout.update(workout_params)
       render :show
     else
