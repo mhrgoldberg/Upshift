@@ -11,14 +11,6 @@ const SplashFooter = () => (
         <a href="https://github.com/mitchellreiss">GitHub</a>
         <a href="https://www.linkedin.com/in/mitchell-reiss/">LinkedIn</a>
     </section>
-    <section className="right-side-footer">
-        
-        {/* <Link to="/signup">
-        Start your journey today!
-        </Link> */}
-
-      
-    </section>
     </div>
   </footer>
 )

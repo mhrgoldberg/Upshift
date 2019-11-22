@@ -71,7 +71,9 @@ class CreateRoute extends React.Component {
     const request = {
       origin: this.state.waypoints[0].location,
       destination: this.state.waypoints[this.state.waypoints.length-1].location,
+      // this.state.waypoints is an array of all clicks on the map
       waypoints: this.state.waypoints.slice(1, -1),
+      // use the state to store the route type
       travelMode: this.state.route_type === 'Running' ? 'WALKING' : 'BICYCLING',
       optimizeWaypoints: false,
       avoidFerries: true,

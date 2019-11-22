@@ -152,9 +152,7 @@ class WorkoutForm extends React.Component {
                 />
               </div>
             </div>
-          {/* </div>
 
-          <div className="row"> */}
             <div className="input-block">
               <div className="form-label">Route</div>
                 {this.routesDropdown()}

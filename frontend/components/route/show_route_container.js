@@ -2,9 +2,6 @@ import ShowRoute from './show_route';
 import { connect } from 'react-redux';
 import { fetchRoute } from '../../actions/route_actions'
 
-// const defaultState = {
-
-// }
 
 const mSTP = (state, ownProps) => ({
   route: state.entities.routes[ownProps.match.params.routeId] || {
