@@ -13,6 +13,7 @@ import CreateWorkoutContainer from "./workouts/create_workout_container";
 import EditWorkoutContainer from "./workouts/edit_workout_container";
 import ShowWorkoutContainer from "./workouts/show_workout_container"
 import WorkoutIndexContainer from "./workouts/workout_index_container";
+import FeedContainer from "./feed/feed_container"
 
 const App = () => (
   <div className="outside-div">
@@ -28,9 +29,10 @@ const App = () => (
         <LoggedInRoute path="/routes" component={RouteIndexContainer} />
         <LoggedInRoute path="/workout/new" component={CreateWorkoutContainer} />
         <LoggedInRoute path="/workout/edit/:workoutId" component={EditWorkoutContainer} />
-        <LoggedInRoute path="/workout/:workoutId" component={ShowWorkoutContainer} />
+        {/* <LoggedInRoute path="/workout/:workoutId" component={ShowWorkoutContainer} /> */}
         <LoggedInRoute path="/workouts" component={WorkoutIndexContainer} />
-        <Route exact path="/" component={Splash} />
+        <LoggedInRoute path="/feed" component={FeedContainer} />
+        <AuthRoute exact path="/" component={Splash} />
         <Route component={NotFound} />
       </Switch>
 

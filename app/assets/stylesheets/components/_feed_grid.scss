@@ -1,0 +1,45 @@
+.feed-container{
+  background: #f5f5fA;
+  width: 100vw;
+  min-height: 90vh;
+  display: flex;
+
+
+  .feed-left{
+    width: 25vw;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5%;
+  }
+
+  .feed-right{
+    width: 25vw;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5%;
+  }
+  
+  .feed-center{
+    width: 50vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  @media only screen and (max-width: 900px) {
+      .feed-left, .feed-right {
+          width: 0;
+          visibility: hidden;
+      }
+      .feed-center{
+          width: 100vw;
+      }
+
+  }
+
+      
+
+}

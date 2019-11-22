@@ -57,25 +57,44 @@ class NavBar extends React.Component {
     )
   }
 
+  loggedOutLeftSide() {
+    return (
+      <div className="left-side">
+        <Link to="/" >
+          <div className="logo"></div>
+          <h1>UpShift</h1>
+        </Link>
+      </div>
+    )
+  }
+
   dashboardDropdown() {
     return (
-      <div className="dropdown">
-      <p>Dashboard</p>
-      <i className="fas fa-caret-down"></i>
-        <div className="dropdown-content">
-          <Link to="/routes">Routes</Link>
-          <Link to="/route/new">New Route</Link>
-          <Link to="/workouts">Workouts</Link>
-          <Link to="/workout/new">New Workout</Link>
+      <div className="left-side">
+        <Link to="/feed">
+        <div className="logo"></div>
+        <h1>UpShift</h1>
+        </Link>
+        <div className="dropdown">
+        <p>Dashboard</p>
+        <i className="fas fa-caret-down"></i>
+          <div className="dropdown-content">
+            <Link to={`/feed`}>Feed</Link>
+            <Link to="/routes">Routes</Link>
+            <Link to="/route/new">New Route</Link>
+            <Link to="/workouts">Workouts</Link>
+            <Link to="/workout/new">New Workout</Link>
+          </div>
         </div>
-    </div>
+      </div>
+      
     )
   }
 
   render() {
     const {currentUser, location} = this.props;
     let rSide = this.loggedOutBar();
-    let lSide = null;
+    let lSide =  this.loggedOutLeftSide();
 
     if (currentUser) {
       rSide = this.loggedInBar();
@@ -90,13 +109,9 @@ class NavBar extends React.Component {
 
     return(
       <nav>
-          <div className="left-side">
-            <Link to="/" >
-            <div className="logo"></div>
-            <h1>UpShift</h1>
-            </Link>
-            {lSide} 
-          </div>
+        <div>
+          {lSide}
+        </div>
         <div>
           {rSide}
         </div>

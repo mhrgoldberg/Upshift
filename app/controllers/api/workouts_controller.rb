@@ -1,11 +1,7 @@
 class Api::WorkoutsController < ApplicationController
 
   def index
-    if params[:user_id] == current_user.id
-      @workouts = current_user.workouts
-    else
-      @workouts = Workout.all
-    end
+    @workouts = current_user.workouts
   end
   
   def show
@@ -35,6 +31,7 @@ class Api::WorkoutsController < ApplicationController
   def destroy
     workout = current_user.workouts.find(params[:id])
     workout.destroy
+    @workouts = [workout]
     render :index
   end
 

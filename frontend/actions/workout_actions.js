@@ -48,10 +48,10 @@ export const createWorkout = workout => dispatch => {
 
 export const deleteWorkout = workoutId => dispatch => {
   return destroyWorkout(workoutId)
-  .then( workout => dispatch(removeWorkout(workout.id)))
+  .then( () => dispatch(removeWorkout(workoutId)))
 }
 
 export const updateWorkout = workout => dispatch => {
   return patchWorkout(workout)
-  .then( workout => dispatch(receiveWorkout(workout)))
+  .then( (workout) => dispatch(receiveWorkout(workout)))
 }
