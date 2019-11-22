@@ -1,27 +1,24 @@
+
+
 .feed-container{
   background: #f5f5fA;
   width: 100vw;
   min-height: 90vh;
   display: flex;
+  padding-top: 5vh;
 
 
   .feed-left{
     width: 25vw;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 5%;
   }
 
   .feed-right{
     width: 25vw;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 5%;
   }
   
   .feed-center{
     width: 50vw;
-    margin: auto;
+    // margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,14 +26,28 @@
     
   }
 
-  @media only screen and (max-width: 900px) {
-      .feed-left, .feed-right {
-          width: 0;
-          visibility: hidden;
-      }
-      .feed-center{
-          width: 100vw;
-      }
+  @media only screen and (max-width: 1200px) {
+    .feed-right {
+      width: 0;
+      visibility: hidden;
+    }
+    .feed-left {
+      width: 30vw;
+    }
+    .feed-center{
+      width: 60vw;
+    }
+
+  }
+
+  @media only screen and (max-width: 950px) {
+    .feed-left, .feed-right {
+      width: 0;
+      visibility: hidden;
+    }
+    .feed-center{
+      width: 100vw;
+    }
 
   }
 

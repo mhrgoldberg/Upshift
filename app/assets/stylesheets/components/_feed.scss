@@ -1,6 +1,7 @@
 .feed-map-img{
   width: 550px;
   height: 300px;
+  margin: 0 auto;
 }
 
 .feed-index-item{
@@ -12,7 +13,96 @@
   color: #2d2d32;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  // align-items: center;
+  // justify-content: center;
   box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
+}
+
+.user-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 200px;
+  justify-content: space-around;
+
+}
+
+.feed-user-data{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 12vh;
+  width:220px;
+  height: 351px;
+  background: white;
+  border-radius: 5px;
+  margin-left: 5vw;
+  margin-top: 10px;
+  color: #2d2d32;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
+}
+
+.feed-right-links{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 12vh;
+  // width:220px;
+  // height: 300px;
+  // background: white;
+  border-radius: 5px;
+  margin-right: 5vw;
+  // margin-top: 10px;
+  color: #2d2d32;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  // box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
+  h3{
+    border-bottom: 1px solid gray;
+    text-align: center;
+    width: 180px;
+    font-size: 18px;
+    margin-top: 5px;
+  }
+}
+.data-row{
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.workout-data{
+  margin: 20px;
+}
+
+.github-logo{
+  background: asset-url("GitHub-Mark-120px-plus.png");
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+.linkedin-logo{
+  background: asset-url("LI-In-Bug.png");
+  width: 120px;
+  height: 120px;
+  background-size: cover;
+}
+
+
+@media only screen and (min-width: 1500px) {
+  .feed-index-item{
+    width: 700px;
+  }
+
+}
+@media only screen and (min-width: 1600px) {
+  .feed-index-item{
+    width: 800px;
+  }
+
 }

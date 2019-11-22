@@ -6,8 +6,6 @@
   flex-direction: column;
   height: 93vh;
   width: 100vw;
-  // background-size: unset;
-    // position: relative;
   overflow: hidden;
   background-image: asset-url("2_women_splash.jpg");
   -webkit-background-size: cover;
@@ -48,8 +46,8 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-right: 10%;
-  margin-left: 10%;
+  margin-right: 5vw;
+  margin-left: 5vw;
   height: 100px;
 
 }
@@ -115,9 +113,6 @@ footer h3{
     text-transform: none;
 }
 
-.splash a{
-
-}
 
 // .follow-buttons {
 //   display: flex;

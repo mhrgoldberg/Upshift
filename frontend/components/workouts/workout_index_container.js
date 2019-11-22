@@ -4,7 +4,7 @@ import WorkoutIndex from './workout_index';
 
 
 const mSTP = state => ({
-  workouts: Object.values(state.entities.workouts),
+  workouts: Object.values(state.entities.workouts) || [],
 });
 
 const mDTP = dispatch => ({
