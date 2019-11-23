@@ -37,7 +37,9 @@ footer {
   bottom: 0px;
   width: 100vw;
   height: 100px;
-  background: #2d2e2cd0;
+  // background: #2d2e2cd0;
+  background: rgba(45, 45, 50, 0.651);
+  
 
 }
 
@@ -87,6 +89,11 @@ footer a{
 
 }
 
+footer a:hover {
+  background: rgba(45, 45, 50, 0.986);
+
+}
+
 footer h1{
   color: lightgrey;
 }
@@ -102,7 +109,7 @@ footer h3{
 .splash-button {
     color: $white;
     font-size: 24px;
-    background-color:$strava-orange;
+    background: rgba(45, 45, 50, 0.651);
     border-radius: 10px;
     width: 250px;
     height: 60px;
@@ -113,6 +120,9 @@ footer h3{
     text-transform: none;
 }
 
+.splash-button:hover {
+  background: rgba(105, 105, 110, 0.651);
+}
 
 // .follow-buttons {
 //   display: flex;

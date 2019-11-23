@@ -48,7 +48,7 @@ One of the biggest challenges I encountered while building this app was deciding
   }
 
   ```
-![alt text](app/assets/images/Screen Shot 2019-11-22 at 11.02.07 AM.png)
+![](https://ibb.co/bB80MZ3)
 
 Another challenge I encountered was deciding on how I was going to store my route data in my database. I initially wanted to store the route data in a gpx(XML format) file. This would allow users to use a common data format supported by most fitness tracking device to upload past workout files and routes directly to the app and have it parsed into google maps latLng route waypoints. With the consideration of time I settled on storing the data as a JSON object converted into a string. In the future I will implement a GPX parsing algorithim to store the data in a more flexible format.
 
