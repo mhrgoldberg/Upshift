@@ -4,6 +4,8 @@
 
 Upshift, is my take on cloning Strava which allows you to create and track your workout routes and activities. This application was built in 10 days and is a single page app built with a Rails backend, postgress database, and a React and Redux frontend.
 
+<a href="https://ibb.co/3cJjyy3"><img src="https://i.ibb.co/WfTMWWh/Screen-Shot-2019-11-22-at-12-32-21-PM.png" alt="Screen-Shot-2019-11-22-at-12-32-21-PM" border="0"></a>
+
 ## Features
 * Sign Up/ Sign In/ Log Out
 * Workout Feed
@@ -48,7 +50,7 @@ One of the biggest challenges I encountered while building this app was deciding
   }
 
   ```
-![](https://ibb.co/bB80MZ3)
+<a href="https://ibb.co/Jpz0Msh"><img src="https://i.ibb.co/QH6z1K5/Screen-Shot-2019-11-22-at-11-02-07-AM.png" alt="Screen-Shot-2019-11-22-at-11-02-07-AM" border="0"></a>
 
 Another challenge I encountered was deciding on how I was going to store my route data in my database. I initially wanted to store the route data in a gpx(XML format) file. This would allow users to use a common data format supported by most fitness tracking device to upload past workout files and routes directly to the app and have it parsed into google maps latLng route waypoints. With the consideration of time I settled on storing the data as a JSON object converted into a string. In the future I will implement a GPX parsing algorithim to store the data in a more flexible format.
 
