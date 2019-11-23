@@ -32,8 +32,8 @@ class WorkoutIndex extends React.Component{
             return <tr key={workout.id}>
               <td><Link to={`/workout/${workout.id}`}>{workout.title}</Link></td> 
               <td>{hours}:{minutes}:{seconds}</td>
-              <td>{workout.avg_hr}</td>
-              <td>{workout.avg_speed.toFixed(2)}</td>
+              <td>{workout.avg_hr} bpm</td>
+              <td>{workout.avg_speed.toFixed(2)} mph</td>
               <td className="modify-workout"> 
                 <div className="delete-workout" onClick={() => deleteWorkout(workout.id)} >
                   Delete

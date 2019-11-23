@@ -40,15 +40,15 @@ class FeedItem extends React.Component {
             <div className="data-title">Duration</div>
           </div>
           <div className="workout-data">
-            <div className="data">{avg_speed.toFixed(2)}</div>
+            <div className="data">{avg_speed.toFixed(2)} mph</div>
             <div className="data-title">Average Speed</div>
           </div>
           <div className="workout-data">
-            <div className="data">{distance.toFixed(2)}</div>
+            <div className="data">{distance.toFixed(2)} mi</div>
             <div className="data-title">Distance</div>
           </div>
           <div className="workout-data">
-            <div className="data">{elevation_gain}</div>
+            <div className="data">{elevation_gain} ft</div>
             <div className="data-title">Elevation</div>
           </div>
         </div>
