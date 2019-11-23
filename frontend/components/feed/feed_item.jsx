@@ -22,6 +22,10 @@ class FeedItem extends React.Component {
     const {duration, avg_speed, title, created_at} = this.props.workout;
     const { username } = this.props.user;
 
+    const hours = Math.floor(duration/60);
+    const minutes = ("0" + Math.floor(duration%60)).slice(-2);
+    const seconds = ("0" + Math.floor(duration%10)).slice(-2);
+
 
     return(
       <div className="feed-index-item">
@@ -32,7 +36,7 @@ class FeedItem extends React.Component {
         <h2>{title}</h2>
           <div className="data-row">
           <div className="workout-data">
-            <div className="data">{duration}</div>
+            <div className="data">{hours}:{minutes}:{seconds}</div>
             <div className="data-title">Duration</div>
           </div>
           <div className="workout-data">

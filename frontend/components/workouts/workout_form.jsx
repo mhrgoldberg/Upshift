@@ -7,9 +7,9 @@ class WorkoutForm extends React.Component {
     super(props);
     this.state = {
       ...props.workout, 
-      hours: Math.floor(props.workout.duration/60) || "", 
-      minutes: Math.floor(props.workout.duration%60) || "", 
-      seconds: Math.floor(props.workout.duration%10) || "",
+      hours:("0" + Math.floor(props.workout.duration/60)).slice(-2) || "", 
+      minutes: ("0" + Math.floor(props.workout.duration%60)).slice(-2) || "", 
+      seconds: ("0" + Math.floor(props.workout.duration%10)).slice(-2) || "",
       distance: 0
     };
 
@@ -51,7 +51,7 @@ class WorkoutForm extends React.Component {
 
   updateInteger(field) {
     return e => {
-      const newInt = parseInt(e.currentTarget.value, 10);
+      const newInt = ("0" + parseInt(e.currentTarget.value, 10)).slice(-2);
       this.setState({ [field]: newInt });
     }
   }
