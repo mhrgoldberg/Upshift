@@ -1,4 +1,4 @@
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -6,22 +6,21 @@ nav{
   margin-left: 5vw;
   height: 100%;
   align-items: center;
-
 }
 
-header{
+header {
   border-bottom: 1px solid lightgray;
   height: 7vh;
 }
 
-.logo{
+.logo {
   height: 50px;
   width: 50px;
   background-size: 50px 50px;
   background-image: asset-url("strava-logo.png");
 }
 
-.profile_pic{
+.profile_pic {
   height: 33px;
   width: 33px;
   background-size: 33px 33px;
@@ -30,7 +29,7 @@ header{
   border: solid lightgray 1px;
 }
 
-.r-side-buttons{
+.r-side-buttons {
   display: flex;
 }
 
@@ -40,11 +39,11 @@ header{
   width: 55px;
 }
 
-.left-side{
+.left-side {
   display: flex;
   flex-direction: row;
   align-items: center;
-  a{
+  a {
     display: flex;
     flex-direction: row;
   }
@@ -67,7 +66,7 @@ header{
   }
 }
 
-.left-side h1{
+.left-side h1 {
   font-size: 30px;
   color: $strava-orange;
   margin-top: 5px;
@@ -82,7 +81,6 @@ header{
   height: 7vh;
   cursor: pointer;
 }
-
 
 .dropdown-content a {
   float: none;
@@ -115,14 +113,14 @@ header{
   cursor: pointer;
 }
 
-@media screen and (max-height:700px){
+@media screen and (max-height: 700px) {
   header {
     height: 10vh;
   }
-  .dropdown{
+  .dropdown {
     height: 10vh;
   }
-  .dropdown-content{
+  .dropdown-content {
     top: 10vh;
   }
 }
