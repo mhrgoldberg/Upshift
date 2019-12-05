@@ -24,7 +24,7 @@ class FeedItem extends React.Component {
 
     const hours = Math.floor(duration/60);
     const minutes = ("0" + Math.floor(duration%60)).slice(-2);
-    const seconds = ("0" + Math.floor(duration%10)).slice(-2);
+    const seconds = ("0" + Math.round((duration % 1) * 60)).slice(-2);
 
 
     return(

@@ -9,7 +9,7 @@ class WorkoutForm extends React.Component {
       ...props.workout, 
       hours:("0" + Math.floor(props.workout.duration/60)).slice(-2) || "", 
       minutes: ("0" + Math.floor(props.workout.duration%60)).slice(-2) || "", 
-      seconds: ("0" + Math.floor(props.workout.duration%10)).slice(-2) || "",
+      seconds: ("0" + Math.round((props.workout.duration % 1) * 60)).slice(-2) || "",
       distance: 0
     };
 
@@ -32,7 +32,7 @@ class WorkoutForm extends React.Component {
     let newState = Object.assign({}, this.state);
     const duration = this.convertTime(
       newState.hours, newState.minutes, newState.seconds
-    );
+    ); 
     delete newState["hours"];
     delete newState["minutes"];
     delete newState["seconds"];
@@ -77,9 +77,9 @@ class WorkoutForm extends React.Component {
   }
 
   convertTime(hr, min, sec) {
-    let time = hr === "aN" ? 0 : parseInt(hr, 10)*60;
-    time += min === "aN" ? 0 : parseInt(min, 10);
-    time += sec === "aN" ? 0 : parseInt(sec, 10)/100; 
+    let time = hr === "aN" || hr === NaN ? 0 : parseInt(hr, 10)*60;
+    time += min === "aN" || min === NaN ? 0 : parseInt(min, 10);
+    time += sec === "aN" || sec === NaN ? 0 : parseInt(sec, 10)/60; 
     return time;
   }
 

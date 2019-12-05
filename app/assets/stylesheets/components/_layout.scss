@@ -1,54 +1,123 @@
 button {
-	background-color: $strava-orange;
-	color: white;
-	font-weight: bold;
-	padding: 7px 9px;
-	border-radius: 3px;
-	transition: background-color 0.3s;
-	text-transform: uppercase;
-	font-size: 11px;
-	text-align: center;
-	height: 15px;
-	width: 42px;
+  background-color: $strava-orange;
+  color: white;
+  font-weight: bold;
+  padding: 7px 9px;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  font-size: 11px;
+  text-align: center;
+  height: 15px;
+  width: 42px;
 }
 
 button:hover {
-	background-color: $strava-light-orange;
+  background-color: $strava-light-orange;
 
-	cursor: pointer;
+  cursor: pointer;
 }
 
 h1 {
   font-size: 24px;
-	font-weight: bold;
+  font-weight: bold;
 }
 
 h2 {
-	text-align: center;
-	margin-bottom: 10px;
-	font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 p {
-	line-height: 16px;
+  line-height: 16px;
 }
 
 img {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #root {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .outside-div {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
-.main-content{
-	height: 100%;
-	width: 100%;
+.main-content {
+  height: 100%;
+  width: 100%;
+}
+
+.loader {
+  color: #fff;
+  position: fixed;
+  box-sizing: border-box;
+  left: -9999px;
+  top: -9999px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: 999999;
+}
+.loader:after,
+.loader:before {
+  box-sizing: border-box;
+  display: none;
+}
+.loader.is-active {
+  background-color: rgba(0, 0, 0, 0.85);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.loader.is-active:after,
+.loader.is-active:before {
+  display: block;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.loader-double:after,
+.loader-double:before {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  border: 8px solid;
+  animation: rotation 1s linear infinite;
+}
+.loader-double:after {
+  width: 48px;
+  height: 48px;
+  border-color: #fff;
+  border-left-color: transparent;
+  top: calc(50% - 24px);
+  left: calc(50% - 24px);
+}
+.loader-double:before {
+  width: 64px;
+  height: 64px;
+  border-color: #eb974e;
+  border-right-color: transparent;
+  animation-duration: 2s;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
 }

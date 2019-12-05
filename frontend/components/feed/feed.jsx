@@ -6,11 +6,15 @@ class Feed extends React.Component {
   constructor(props) {
     super(props);
     this.chartRef = React.createRef();
+    this.state = {
+      workouts: []
+    }
   }
 
   componentDidMount() {
     const myChartRef = this.chartRef.current.getContext("2d");
     this.props.fetchUserFeed().then((payload) => {
+      this.setState({workouts: Object.values(payload.workouts).reverse()});
       let bike_count = 0;
       let run_count = 0;
       if (payload.userWorkouts) {
@@ -41,7 +45,13 @@ class Feed extends React.Component {
   }
 
   render() {
-    const { currentUser, workouts, userWorkouts, routes, users } = this.props;
+    const { currentUser, userWorkouts, routes, users } = this.props;
+    const workouts = this.state.workouts;
+    if (!userWorkouts || !workouts) {
+      return (
+        <div class="loader loader-double is-active"></div>
+      )
+    } 
   
     return (
       <div className="feed-background">
@@ -69,7 +79,8 @@ class Feed extends React.Component {
             </div>
           </div>
           <div className="feed-center">
-            {workouts.reverse().map(workout => {
+            
+            {workouts.map(workout => {
               return (
                 <FeedItem
                   workout={workout}

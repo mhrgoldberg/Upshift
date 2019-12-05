@@ -18,7 +18,11 @@ class EditWorkoutForm extends React.Component {
     const { workout, formType, submitWorkout, errors, fetchAllRoutes, routes } = this.props;
 
 
-    if (!workout) return null;
+    if (!workout) {
+      return (
+        <div class="loader loader-double is-active"></div>
+      )
+    } 
     return (
       <WorkoutForm
         workout={workout}
