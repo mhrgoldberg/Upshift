@@ -164,7 +164,7 @@ class WorkoutForm extends React.Component {
               <div className="input-block">
                 <div className="form-label">Average Heart Rate</div>
                 <input type="number" 
-                  onChange={this.updateInteger('avg_hr')} 
+                  onChange={this.update('avg_hr')} 
                   value={this.state.avg_hr} 
                   min="0"
                 />
@@ -173,7 +173,7 @@ class WorkoutForm extends React.Component {
             <div className="input-block">
               <div className="form-label">Resting Heart Rate</div>
                 <input type="number" 
-                  onChange={this.updateInteger('resting_hr')} 
+                  onChange={this.update('resting_hr')} 
                   value={this.state.resting_hr} 
                   min="0"
                 />
@@ -186,7 +186,7 @@ class WorkoutForm extends React.Component {
               <div className="form-label">Fatigue</div>
               <select 
                   value={this.state.fatigue} 
-                  onChange={this.updateInteger('fatigue')}
+                  onChange={this.update('fatigue')}
                   className="numbered-select"
                 >
                   <option></option>
@@ -202,7 +202,7 @@ class WorkoutForm extends React.Component {
               <div className="form-label">Mood</div>
               <select 
                   value={this.state.mood} 
-                  onChange={this.updateInteger('mood')}
+                  onChange={this.update('mood')}
                   className="numbered-select"
                 >
                   <option></option>
@@ -218,7 +218,7 @@ class WorkoutForm extends React.Component {
               <div className="form-label">Motivation</div>
               <select 
                   value={this.state.motivation} 
-                  onChange={this.updateInteger('motivation')}
+                  onChange={this.update('motivation')}
                   className="numbered-select"
                 >
                   <option></option>
@@ -234,7 +234,7 @@ class WorkoutForm extends React.Component {
               <div className="form-label">Quality</div>
               <select 
                   value={this.state.quality} 
-                  onChange={this.updateInteger('quality')}
+                  onChange={this.update('quality')}
                   className="numbered-select"
                 >
                   <option></option>
