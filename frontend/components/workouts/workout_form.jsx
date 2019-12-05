@@ -77,9 +77,9 @@ class WorkoutForm extends React.Component {
   }
 
   convertTime(hr, min, sec) {
-    let time = hr === "aN" || hr === NaN ? 0 : parseInt(hr, 10)*60;
-    time += min === "aN" || min === NaN ? 0 : parseInt(min, 10);
-    time += sec === "aN" || sec === NaN ? 0 : parseInt(sec, 10)/60; 
+    let time = hr === "aN" || isNaN(hr) ? 0 : parseInt(hr, 10)*60;
+    time += min === "aN" ||isNaN(min) ? 0 : parseInt(min, 10);
+    time += sec === "aN" || isNaN(sec) ? 0 : parseInt(sec, 10)/60; 
     return time;
   }
 
