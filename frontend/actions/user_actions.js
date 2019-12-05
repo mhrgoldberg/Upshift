@@ -7,7 +7,8 @@ const receiveUserFeed = payload => ({
   type: RECEIVE_USER_FEED,
   workouts: payload.workouts,
   routes: payload.routes,
-  users: payload.users
+  users: payload.users,
+  userWorkouts: payload.userWorkouts
 })
 
 // const receiveUser = payload => ({

@@ -6,6 +6,14 @@ json.users do
   end
 end
 
+json.userWorkouts do
+  @users_workouts.each do |workout|
+    json.set! workout.id do
+      json.partial! 'api/workouts/workout', workout: workout
+    end
+  end
+end
+
 json.workouts do
   @workouts.each do |workout|
     json.set! workout.id do

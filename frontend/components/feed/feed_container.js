@@ -6,7 +6,8 @@ const mSTP = (state) => ({
   workouts: Object.values(state.entities.workouts),
   routes: state.entities.routes,
   currentUser: state.entities.users[state.session.id],
-  users: state.entities.users
+  users: state.entities.users,
+  userWorkouts: state.entities.userWorkouts
 })
 
 const mDTP = (dispatch) => ({  

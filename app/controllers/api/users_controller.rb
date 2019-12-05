@@ -2,6 +2,7 @@ class Api::UsersController < ApplicationController
   
   def index
     @users = User.all
+    @users_workouts = current_user.workouts
     @workouts = Workout.all
     @routes = Route.all
   end
