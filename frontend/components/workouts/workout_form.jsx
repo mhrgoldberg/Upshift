@@ -70,9 +70,10 @@ class WorkoutForm extends React.Component {
   }
 
   convertTime(hr, min, sec) {
-    let time = hr*60;
-    time += min;
-    time += sec/100;
+    let time = parseInt(hr, 10)*60;
+    time += parseInt(min, 10);
+    time += parseInt(sec, 10)/100;
+
     return time;
   }
 

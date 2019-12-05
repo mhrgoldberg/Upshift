@@ -5,7 +5,7 @@ const userWorkoutsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_USER_FEED:
-      return action.userWorkouts
+      return action.userWorkouts || {};
     default:
       return state;   
   }
