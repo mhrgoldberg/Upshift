@@ -30,6 +30,7 @@ class WorkoutForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let newState = Object.assign({}, this.state);
+    debugger
     const duration = this.convertTime(
       newState.hours, newState.minutes, newState.seconds
     );
@@ -49,9 +50,16 @@ class WorkoutForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
+  updateIntegerTime(field) {
+    return e => {
+      const newInt = parseInt(("0" + parseInt(e.currentTarget.value, 10)).slice(-2));
+      this.setState({ [field]: newInt });
+    }
+  }
+
   updateInteger(field) {
     return e => {
-      const newInt = ("0" + parseInt(e.currentTarget.value, 10)).slice(-2);
+      const newInt = parseInt(e.currentTarget.value, 10);
       this.setState({ [field]: newInt });
     }
   }
@@ -70,10 +78,9 @@ class WorkoutForm extends React.Component {
   }
 
   convertTime(hr, min, sec) {
-    let time = parseInt(hr, 10)*60;
-    time += parseInt(min, 10);
-    time += parseInt(sec, 10)/100;
-
+    let time = hr === "aN" ? 0 : parseInt(hr, 10)*60;
+    time += min === "aN" ? 0 : parseInt(min, 10);
+    time += sec === "aN" ? 0 : parseInt(sec, 10)/100;
     return time;
   }
 
@@ -131,7 +138,7 @@ class WorkoutForm extends React.Component {
             <div className="form-label">Duration</div>
               <div className="form-duration">
                 <input type="number" 
-                  onChange={this.updateInteger('hours')} 
+                  onChange={this.updateIntegerTime('hours')} 
                   value={this.state.hours} 
                   min="0"
                   placeholder="hr"
@@ -139,14 +146,14 @@ class WorkoutForm extends React.Component {
           
           
                 <input type="number" 
-                  onChange={this.updateInteger('minutes')} 
+                  onChange={this.updateIntegerTime('minutes')} 
                   value={this.state.minutes} 
                   min="0"
                   placeholder="min"
                 />
 
                 <input type="number" 
-                  onChange={this.updateInteger('seconds')} 
+                  onChange={this.updateIntegerTime('seconds')} 
                   value={this.state.seconds} 
                   min="0"
                   placeholder="sec"
@@ -165,7 +172,7 @@ class WorkoutForm extends React.Component {
               <div className="input-block">
                 <div className="form-label">Average Heart Rate</div>
                 <input type="number" 
-                  onChange={this.update('avg_hr')} 
+                  onChange={this.updateInteger('avg_hr')} 
                   value={this.state.avg_hr} 
                   min="0"
                 />
@@ -174,7 +181,7 @@ class WorkoutForm extends React.Component {
             <div className="input-block">
               <div className="form-label">Resting Heart Rate</div>
                 <input type="number" 
-                  onChange={this.update('resting_hr')} 
+                  onChange={this.updateInteger('resting_hr')} 
                   value={this.state.resting_hr} 
                   min="0"
                 />
@@ -187,7 +194,7 @@ class WorkoutForm extends React.Component {
               <div className="form-label">Fatigue</div>
               <select 
                   value={this.state.fatigue} 
-                  onChange={this.update('fatigue')}
+                  onChange={this.updateInteger('fatigue')}
                   className="numbered-select"
                 >
                   <option></option>
@@ -203,7 +210,7 @@ class WorkoutForm extends React.Component {
               <div className="form-label">Mood</div>
               <select 
                   value={this.state.mood} 
-                  onChange={this.update('mood')}
+                  onChange={this.updateInteger('mood')}
                   className="numbered-select"
                 >
                   <option></option>
@@ -219,7 +226,7 @@ class WorkoutForm extends React.Component {
               <div className="form-label">Motivation</div>
               <select 
                   value={this.state.motivation} 
-                  onChange={this.update('motivation')}
+                  onChange={this.updateInteger('motivation')}
                   className="numbered-select"
                 >
                   <option></option>
@@ -235,7 +242,7 @@ class WorkoutForm extends React.Component {
               <div className="form-label">Quality</div>
               <select 
                   value={this.state.quality} 
-                  onChange={this.update('quality')}
+                  onChange={this.updateInteger('quality')}
                   className="numbered-select"
                 >
                   <option></option>

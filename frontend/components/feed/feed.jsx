@@ -11,13 +11,16 @@ class Feed extends React.Component {
   componentDidMount() {
     const myChartRef = this.chartRef.current.getContext("2d");
     this.props.fetchUserFeed().then((payload) => {
-      
-      const bike_count = Object.values(payload.userWorkouts).filter( workout => {
+      let bike_count = 0;
+      let run_count = 0;
+      if (payload.userWorkouts) {
+        bike_count = Object.values(payload.userWorkouts).filter( workout => 
+          workout.workout_type === "Cycling").length
+        
+        run_count = Object.values(payload.userWorkouts).filter( workout => 
+          workout.workout_type === "Running").length
+      }
 
-        return workout.workout_type === "Cycling"}).length
-      
-      const run_count = Object.values(payload.userWorkouts).filter( workout => 
-        workout.workout_type === "Running").length
 
       const data = [bike_count, run_count];
       new Chart(myChartRef, {
@@ -66,7 +69,7 @@ class Feed extends React.Component {
             </div>
           </div>
           <div className="feed-center">
-            {workouts.map(workout => {
+            {workouts.reverse().map(workout => {
               return (
                 <FeedItem
                   workout={workout}

@@ -143,6 +143,8 @@ route2 = Route.create(
     comment: "I wasn't very motivated today, but I had some friends to ride with so that helped me get out of bed and on the bike!",
   )
 
+  
+  
   workout4 = Workout.create(
     user_id: user1.id,
     route_id: route6.id,
@@ -158,4 +160,5 @@ route2 = Route.create(
     quality: 5,
     comment: "This was a big one! It is a big achievement to make it up the mountain!",
   )
+
 
