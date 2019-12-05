@@ -30,7 +30,6 @@ class WorkoutForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let newState = Object.assign({}, this.state);
-    debugger
     const duration = this.convertTime(
       newState.hours, newState.minutes, newState.seconds
     );
@@ -80,7 +79,7 @@ class WorkoutForm extends React.Component {
   convertTime(hr, min, sec) {
     let time = hr === "aN" ? 0 : parseInt(hr, 10)*60;
     time += min === "aN" ? 0 : parseInt(min, 10);
-    time += sec === "aN" ? 0 : parseInt(sec, 10)/100;
+    time += sec === "aN" ? 0 : parseInt(sec, 10)/100; 
     return time;
   }
 
