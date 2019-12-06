@@ -31,7 +31,9 @@ export const fetchAllRoutes = () => dispatch => {
 
 export const fetchRoute = routeId => dispatch => {
   return getRoute(routeId)
-  .then( route => dispatch(receiveRoute(route)) )
+  .then( route => {
+    return dispatch(receiveRoute(route))
+  })
 }
 
 export const createRoute = route => dispatch => {

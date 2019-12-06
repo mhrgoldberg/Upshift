@@ -8,27 +8,28 @@ class Feed extends React.Component {
     this.chartRef = React.createRef();
     this.state = {
       workouts: []
-    }
+    };
   }
 
   componentDidMount() {
     const myChartRef = this.chartRef.current.getContext("2d");
-    this.props.fetchUserFeed().then((payload) => {
-      this.setState({workouts: Object.values(payload.workouts).reverse()});
+    this.props.fetchUserFeed().then(payload => {
+      this.setState({ workouts: Object.values(payload.workouts).reverse() });
       let bike_count = 0;
       let run_count = 0;
       if (payload.userWorkouts) {
-        bike_count = Object.values(payload.userWorkouts).filter( workout => 
-          workout.workout_type === "Cycling").length
-        
-        run_count = Object.values(payload.userWorkouts).filter( workout => 
-          workout.workout_type === "Running").length
-      }
+        bike_count = Object.values(payload.userWorkouts).filter(
+          workout => workout.workout_type === "Cycling"
+        ).length;
 
+        run_count = Object.values(payload.userWorkouts).filter(
+          workout => workout.workout_type === "Running"
+        ).length;
+      }
 
       const data = [bike_count, run_count];
       new Chart(myChartRef, {
-        type: "pie",
+        type: "doughnut",
         data: {
           labels: ["Bike", "Run"],
           datasets: [
@@ -39,7 +40,15 @@ class Feed extends React.Component {
             }
           ]
         },
-        options: {}
+        options: {
+          responsive: true,
+          legend: {
+            position: "right",
+            labels: {
+              usePointStyle: true,
+            },
+          },
+        }
       });
     });
   }
@@ -48,11 +57,9 @@ class Feed extends React.Component {
     const { currentUser, userWorkouts, routes, users } = this.props;
     const workouts = this.state.workouts;
     if (!userWorkouts || !workouts) {
-      return (
-        <div class="loader loader-double is-active"></div>
-      )
-    } 
-  
+      return <div class="loader loader-double is-active"></div>;
+    }
+
     return (
       <div className="feed-background">
         <div className="feed-container">
@@ -70,7 +77,7 @@ class Feed extends React.Component {
               <div className="workout-data">
                 <div className="data-title">Total Workouts</div>
                 <div className="data">{Object.keys(userWorkouts).length}</div>
-                <br/>
+                <br />
                 <div className="data-title">Workouts by Sport</div>
               </div>
               <div className="workout-pie-chart">
@@ -79,7 +86,6 @@ class Feed extends React.Component {
             </div>
           </div>
           <div className="feed-center">
-            
             {workouts.map(workout => {
               return (
                 <FeedItem
