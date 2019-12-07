@@ -53,6 +53,7 @@ class Feed extends React.Component {
     });
   }
 
+
   render() {
     const { currentUser, userWorkouts, routes, users } = this.props;
     const workouts = this.state.workouts;
