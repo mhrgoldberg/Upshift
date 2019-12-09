@@ -50,7 +50,7 @@ class ShowWorkout extends React.Component {
               {
                 label: "subjective workout paramaters",
                 data,
-                backgroundColor: ["#fd4c01c4", "#2866b2c4", "rgba(0, 128, 0, 0.767)", "rgba(255, 0, 0, 0.767)"]
+                backgroundColor: ["#fd4c01c4", "#007fb6c4", "#c6eac6c4", "#ea4335c4"]
               }
             ]
           },
@@ -159,18 +159,7 @@ class ShowWorkout extends React.Component {
           <Link to={`/workout/edit/${id}`}><button>Edit Workout</button></Link>
           </div>
         </div>
-        <div className="workout-row">
-          <div className="workout-map">
-            <div id="map" ref='map' />
-            <div id="elevation_chart"></div>
-          </div>
-        
-          <div className="subjective-polar-chart">
-            <canvas id="myChart" ref={this.chartRef} />
-            <h3>Comment</h3>
-            <div className="workout-comment"><p>{comment}</p></div>
-          </div>
-        </div>
+
         <div className="workout-show-data">
             <ul>
             <li key="Duration">
@@ -206,6 +195,18 @@ class ShowWorkout extends React.Component {
               <div className="data-title">Resting HR</div>
             </li>
           </ul>
+        </div>
+        <div className="workout-row">
+          <div className="workout-map">
+            <div id="map" ref='map' />
+            <div id="elevation_chart"></div>
+          </div>
+        
+          <div className="subjective-polar-chart">
+            <canvas id="myChart" ref={this.chartRef} />
+            <h3>Comment</h3>
+            <div className="workout-comment"><p>{comment}</p></div>
+          </div>
         </div>
       </div>
     );

@@ -27,8 +27,8 @@
   width: 40vw;
   min-width: 400px;
   margin: 0 auto;
-  // border: 1px solid rgba(13, 13, 18, 0.158);
-  // box-shadow: 0px 8px 24px rgba(13,13,18,0.158);
+  border: 1px solid rgba(13, 13, 18, 0.158);
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.158);
 }
 
 .workout-show-data{
@@ -63,7 +63,7 @@
 
 .subjective-polar-chart{
   h3{
-    margin-top: 20px;
+    margin-top: 60px;
     margin-left: 20px;
     margin-bottom: 2px;
   }
