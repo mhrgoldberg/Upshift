@@ -30,7 +30,7 @@ class WorkoutIndex extends React.Component{
             const minutes = ("0" + Math.floor(workout.duration%60)).slice(-2);
             const seconds = ("0" + Math.round((workout.duration % 1) * 60)).slice(-2);
             return <tr key={workout.id}>
-              <td><Link to={`/workout/${workout.id}`}>{workout.title}</Link></td> 
+              <td><Link className="workout-title" to={`/workout/${workout.id}`}>{workout.title}</Link></td> 
               <td>{hours}:{minutes}:{seconds}</td>
               <td>{workout.avg_hr} bpm</td>
               <td>{workout.avg_speed.toFixed(2)} mph</td>

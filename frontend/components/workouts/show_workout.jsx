@@ -1,10 +1,11 @@
 import React from "react";
-
+import { Link } from "react-router-dom"
 class ShowWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.chartRef = React.createRef();
-
+    // this.getElevationSample = this.getElevationSample.bind(this);
+    // this.plotElevation = this.plotElevation.bind(this);
   }
 
   componentDidMount() {
@@ -14,7 +15,7 @@ class ShowWorkout extends React.Component {
     this.directionsService = new google.maps.DirectionsService();
     this.directionsRenderer = new google.maps.DirectionsRenderer();
     this.elevationService = new google.maps.ElevationService();
-
+  
     const mapOptions = {
       center: { lat: 37.7758, lng: -122.435 },
       zoom: 15
@@ -40,7 +41,6 @@ class ShowWorkout extends React.Component {
           motivation = payload.workout.motivation;
           quality = payload.workout.quality;
         }
-
         const data = [fatigue, mood, motivation, quality];
         new Chart(myChartRef, {
           type: "polarArea",
@@ -50,20 +50,22 @@ class ShowWorkout extends React.Component {
               {
                 label: "subjective workout paramaters",
                 data,
-                backgroundColor: ["#fd4c01", "#2867b2", "green", "red"]
+                backgroundColor: ["#fd4c01c4", "#2866b2c4", "rgba(0, 128, 0, 0.767)", "rgba(255, 0, 0, 0.767)"]
               }
             ]
           },
           options: {
             responsive: true,
+            animationDuration: 1000,
             legend: {
-              position: "left",
+              position: "right",
               labels: {
                 usePointStyle: true
               }
             }
           }
         });
+
         return route;
       })
       .then(payload => {
@@ -80,7 +82,7 @@ class ShowWorkout extends React.Component {
           origin: routeData[0].location,
           destination: routeData[routeData.length-1].location,
           waypoints: routeData.slice(1, -1),
-          travelMode: this.props.route.route_type === 'Running' ? 'WALKING' : 'BICYCLING',
+          travelMode: payload.route.route_type === 'Running' ? 'WALKING' : 'BICYCLING',
           optimizeWaypoints: false,
           avoidFerries: true,
           avoidHighways: true,
@@ -92,93 +94,124 @@ class ShowWorkout extends React.Component {
             this.directionsRenderer.setDirections(result);
           }
         });
+        const latLng = routeData.map( point =>  { 
+          return ({
+            lat: point.location.lat, 
+            lng: point.location.lng
+          })
+        });
+        // this.getElevationSample(latLng, this.elevationService)
 
       });
   }
+  // getElevationSample(path, elevator) {
+  //   // Create a PathElevationRequest object using this array.
+  //   // Ask for 256 samples along that path.
+  //   // Initiate the path request.
+  //   elevator.getElevationAlongPath({
+  //     'path': path,
+  //     'samples': 256
+  //   }, this.plotElevation);
+  // }
 
+  // Takes an array of ElevationResult objects, draws the path on the map
+  // and plots the elevation profile on a Visualization API ColumnChart.
+  // plotElevation(elevations, status) {
+  //   var chartDiv = document.getElementById('elevation_chart');
+  //   if (status !== 'OK') {
+
+  //     chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
+  //         status;
+  //     return;
+  //   }
+
+  //   // window.google.load('visualization', '1', {packages: ['columnchart']});
+  //   this.chart = new google.visualization.ColumnChart(chartDiv);
+    
+  //   var data = new google.visualization.DataTable();
+  //   data.addColumn('string', 'Sample');
+  //   data.addColumn('number', 'Elevation');
+  //   for (var i = 0; i < elevations.length; i++) {
+  //     data.addRow(['', elevations[i].elevation]);
+  //   }
+
+  //   this.chart.draw(data, {
+  //     height: 150,
+  //     legend: 'none',
+  //     titleY: 'Elevation (m)'
+  //   });
+  // }
 
   render() {
-    // const {} = this.props.workout;
-    // const {} = this.props.route;
+    const {workout_type, avg_speed, avg_hr, comment, title, duration, resting_hr, id} = this.props.workouts;
+    const {distance, elevation_gain, elevation_loss, max_elevation} = this.props.routes;
+    const hours = Math.floor(duration/60);
+    const minutes = ("0" + Math.floor(duration%60)).slice(-2);
+    const seconds = ("0" + Math.round((duration % 1) * 60)).slice(-2);
+    const icon =  workout_type === "Cycling" ? <i className="fas fa-biking"></i> : <i className="fas fa-running"></i>
+
     return (
-      <div>
-        <div id="map" ref='map' />
-        <div className="subjective-polar-chart">
-          
-          <canvas id="myChart" ref={this.chartRef} />
+      <div className="show-workout-container">
+        <div className="routes-sub-header">
+          <h1>{icon} {title}</h1>
+          <div className="workout-header-buttons">
+          <Link to="/workouts"><button>All Workouts</button></Link>
+          <Link to={`/workout/edit/${id}`}><button>Edit Workout</button></Link>
+          </div>
+        </div>
+        <div className="workout-row">
+          <div className="workout-map">
+            <div id="map" ref='map' />
+            <div id="elevation_chart"></div>
+          </div>
+        
+          <div className="subjective-polar-chart">
+            <canvas id="myChart" ref={this.chartRef} />
+            <h3>Comment</h3>
+            <div className="workout-comment"><p>{comment}</p></div>
+          </div>
+        </div>
+        <div className="workout-show-data">
+            <ul>
+            <li key="Duration">
+              <div className="data">{hours}:{minutes}:{seconds}</div>
+              <div className="data-title">Duration</div>
+            </li>
+            <li key="dist">
+              <div className="data">{distance.toFixed(2)} mi</div>
+              <div className="data-title">Distance</div>
+            </li>
+            <li key="avg-speed">
+              <div className="data">{avg_speed.toFixed(2)} mph</div>
+              <div className="data-title">Avg Speed</div>
+            </li>
+            <li key="gain">
+              <div className="data">{elevation_gain} ft</div>
+              <div className="data-title">Elevation Gain</div>
+            </li>
+            <li key="loss">
+              <div className="data">{elevation_loss} ft</div>
+              <div className="data-title">Elevation Loss</div>
+            </li>
+            <li key="max">
+              <div className="data">{max_elevation} ft</div>
+              <div className="data-title">Max Elevation</div>
+            </li>
+            <li key="avg-hr">
+              <div className="data">{avg_hr} bpm</div>
+              <div className="data-title">Avg HR</div>
+            </li>
+            <li key="resting-hr">
+              <div className="data">{resting_hr} bpm</div>
+              <div className="data-title">Resting HR</div>
+            </li>
+          </ul>
         </div>
       </div>
     );
+
+
   }
 }
 
 export default ShowWorkout;
-
-// function initMap() {
-//   // The following path marks a path from Mt. Whitney, the highest point in the
-//   // continental United States to Badwater, Death Valley, the lowest point.
-//   var path = JSON.parse(this.props.data);
-//   var map = new google.maps.Map(document.getElementById("map"), {
-//     zoom: 8,
-//     center: path[1],
-//     mapTypeId: "terrain"
-//   });
-
-//   // Create an ElevationService.
-//   var elevator = new google.maps.ElevationService();
-
-//   // Draw the path, using the Visualization API and the Elevation service.
-//   displayPathElevation(path, elevator, map);
-// }
-
-// function displayPathElevation(path, elevator, map) {
-//   // Display a polyline of the elevation path.
-//   new google.maps.Polyline({
-//     path: path,
-//     strokeColor: "#0000CC",
-//     strokeOpacity: 0.4,
-//     map: map
-//   });
-
-//   // Create a PathElevationRequest object using this array.
-//   // Ask for 256 samples along that path.
-//   // Initiate the path request.
-//   elevator.getElevationAlongPath(
-//     {
-//       path: path,
-//       samples: 256
-//     },
-//     plotElevation
-//   );
-// }
-// // Takes an array of ElevationResult objects, draws the path on the map
-// // and plots the elevation profile on a Visualization API ColumnChart.
-// function plotElevation(elevations, status) {
-//   var chartDiv = document.getElementById("elevation_chart");
-//   if (status !== "OK") {
-//     // Show the error code inside the chartDiv.
-//     chartDiv.innerHTML =
-//       "Cannot show elevation: request failed because " + status;
-//     return;
-//   }
-//   // Create a new chart in the elevation_chart DIV.
-//   var chart = new google.visualization.ColumnChart(chartDiv);
-
-//   // Extract the data from which to populate the chart.
-//   // Because the samples are equidistant, the 'Sample'
-//   // column here does double duty as distance along the
-//   // X axis.
-//   var data = new google.visualization.DataTable();
-//   data.addColumn("string", "Sample");
-//   data.addColumn("number", "Elevation");
-//   for (var i = 0; i < elevations.length; i++) {
-//     data.addRow(["", elevations[i].elevation]);
-//   }
-
-//   // Draw the chart using the data within its DIV.
-//   chart.draw(data, {
-//     height: 150,
-//     legend: "none",
-//     titleY: "Elevation (m)"
-//   });
-// }

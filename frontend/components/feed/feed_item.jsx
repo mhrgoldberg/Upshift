@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class FeedItem extends React.Component {
 
@@ -19,7 +20,7 @@ class FeedItem extends React.Component {
     }
 
     const {data, distance, elevation_gain} = this.props.route;
-    const {duration, avg_speed, title, created_at} = this.props.workout;
+    const {duration, avg_speed, title, created_at, id} = this.props.workout;
     const { username } = this.props.user;
 
     const hours = Math.floor(duration/60);
@@ -33,7 +34,7 @@ class FeedItem extends React.Component {
           <div className="profile_pic"></div>
           <h3>{username}</h3>
         </div>
-        <h2>{title}</h2>
+        <h2><Link className="workout-title" to={`/workout/${id}`}>{title}</Link></h2>
           <div className="data-row">
           <div className="workout-data">
             <div className="data">{hours}:{minutes}:{seconds}</div>
@@ -52,7 +53,9 @@ class FeedItem extends React.Component {
             <div className="data-title">Elevation</div>
           </div>
         </div>
-        <img className="feed-map-img" src={`${this.createURL(data)}`} />
+        <Link className="workout-title" to={`/workout/${id}`}>
+          <img className="feed-map-img" src={`${this.createURL(data)}`} />
+        </Link>
       </div>
     )
   }

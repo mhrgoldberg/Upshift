@@ -36,7 +36,7 @@ class Feed extends React.Component {
             {
               label: "Total Workouts",
               data,
-              backgroundColor: ["#fd4c01", "#2867b2"]
+              backgroundColor: ["#fd4c01c4", "#2866b2c4"]
             }
           ]
         },
