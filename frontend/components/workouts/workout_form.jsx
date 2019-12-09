@@ -40,8 +40,9 @@ class WorkoutForm extends React.Component {
     newState["user_id"] = this.props.currentUserId;
     newState["avg_speed"] = newState["distance"] / (newState["duration"] / 60);
     delete newState["distance"]
-    this.props.submitWorkout(newState).then(workout => {
-      this.props.history.push(`/workouts`);
+
+    this.props.submitWorkout(newState).then(payload => {
+      this.props.history.push(`/workout/${payload.workout.id}`);
     })
   }
 
