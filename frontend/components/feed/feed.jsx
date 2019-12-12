@@ -1,6 +1,7 @@
 import React from "react";
 import FeedItem from "./feed_item";
 import Chart from "chart.js";
+import { Link } from "react-router-dom";
 
 class Feed extends React.Component {
   constructor(props) {
@@ -70,19 +71,22 @@ class Feed extends React.Component {
                 <div className="profile_pic"></div>
                 <h3>{currentUser.username}</h3>
               </div>
-              <div className="workout-data">
+              <div className="feed-user-info">
                 <div className="data">
                   {currentUser.city}, {currentUser.state}
                 </div>
               </div>
-              <div className="workout-data">
-                <div className="data-title">Total Workouts</div>
-                <div className="data">{Object.keys(userWorkouts).length}</div>
-                <br />
+              
+              
+              <div className="workout-pie-chart">
+              <div className="feed-user-info">
                 <div className="data-title">Workouts by Sport</div>
               </div>
-              <div className="workout-pie-chart">
                 <canvas id="myChart" ref={this.chartRef} />
+              </div>
+              
+              <div className="my-workouts-link">
+                  <Link to="/workouts">My Workouts<i className="fas fa-chevron-right"></i></Link>
               </div>
             </div>
           </div>

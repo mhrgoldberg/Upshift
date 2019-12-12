@@ -14,10 +14,15 @@ header {
 }
 
 .logo {
-  height: 50px;
-  width: 50px;
-  background-size: 50px 50px;
-  background-image: asset-url("strava-logo.png");
+  height: 35px;
+  width: 35px;
+  background-size: 35px 35px;
+  // background-image: asset-url("strava-logo.png");
+  background: url(logo.svg) no-repeat top left;
+  background-size: contain;
+  margin: auto;
+  margin-right: 5px;
+
 }
 
 .profile_pic {
@@ -71,6 +76,10 @@ header {
   color: $strava-orange;
   margin-top: 5px;
   font-weight: 900;
+}
+
+.left-side a:hover {
+  text-decoration: none;
 }
 
 .dropdown {

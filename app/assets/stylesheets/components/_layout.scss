@@ -121,3 +121,7 @@ img {
   top: calc(50% - 32px);
   left: calc(50% - 32px);
 }
+
+a:hover {
+  text-decoration: underline;
+}
