@@ -18,7 +18,7 @@ header {
   width: 35px;
   background-size: 35px 35px;
   // background-image: asset-url("strava-logo.png");
-  background: url(logo.svg) no-repeat top left;
+  background: asset-url("logo.svg") no-repeat top left;
   background-size: contain;
   margin: auto;
   margin-right: 5px;

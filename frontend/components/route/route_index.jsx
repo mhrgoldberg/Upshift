@@ -8,7 +8,7 @@ class RouteIndex extends React.Component {
   }
 
   createURL(data) {
-    const url = "https://maps.googleapis.com/maps/api/staticmap?&path=";
+    const url = "https://maps.googleapis.com/maps/api/staticmap?&path=color:0xfd4c01|";
     const options = `&size=250x250&key=${window.googleAPIKey}`;
     const path = JSON.parse(data).map( waypoint => (
       `${waypoint["location"].lat},${waypoint["location"].lng}`
