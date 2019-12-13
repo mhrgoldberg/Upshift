@@ -9,15 +9,15 @@
 
 
   .feed-left{
-    width: 25vw;
+    width: 30vw;
   }
 
   .feed-right{
-    width: 25vw;
+    width: 30vw;
   }
   
   .feed-center{
-    width: 50vw;
+    width: 40vw;
     // margin: auto;
     display: flex;
     flex-direction: column;
@@ -35,12 +35,12 @@
       width: 30vw;
     }
     .feed-center{
-      width: 60vw;
+      width: 70vw;
     }
 
   }
 
-  @media only screen and (max-width: 950px) {
+  @media only screen and (max-width: 1000px) {
     .feed-left, .feed-right {
       width: 0;
       visibility: hidden;

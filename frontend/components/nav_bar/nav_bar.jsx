@@ -22,7 +22,7 @@ class NavBar extends React.Component {
   loggedInBar() {
     return (
       <div className="r-side-buttons">
-        <div className="profile_pic"></div>
+        <div className="profile-pic"></div>
         <button onClick={this.props.logout}>logout</button>
       </div>
     )
