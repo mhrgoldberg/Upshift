@@ -18,6 +18,7 @@ class Api::WorkoutsController < ApplicationController
       render json: @workout.errors.full_messages, status: 422
     end
   end
+
   
   def update
     @workout = current_user.workouts.find(params[:id])

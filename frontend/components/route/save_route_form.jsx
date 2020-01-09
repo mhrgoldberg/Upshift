@@ -31,10 +31,10 @@ class SaveRouteForm extends React.Component {
     return (e) => this.setState( {[type]: e.currentTarget.value } )
   }
 
-  render(){
+  render() {
     const { errors } = this.props;
 
-    const err =  <ul className="errors">
+    const err = <ul className="errors">
       { errors.map( (error, i) => {
         return <li key={i}>{error}</li>
       })}
