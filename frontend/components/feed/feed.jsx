@@ -46,13 +46,14 @@ class Feed extends React.Component {
           legend: {
             position: "right",
             labels: {
-              usePointStyle: true
-            }
-          }
+              usePointStyle: true,
+            },
+          },
         }
       });
     });
   }
+
 
   render() {
     const { currentUser, userWorkouts, routes, users } = this.props;
@@ -67,7 +68,7 @@ class Feed extends React.Component {
           <div className="feed-left">
             <div className="feed-user-data">
               <div className="user-info">
-                <div className="profile-pic"></div>
+                <div className="profile_pic"></div>
                 <h3>{currentUser.username}</h3>
               </div>
               <div className="feed-user-info">
@@ -75,18 +76,17 @@ class Feed extends React.Component {
                   {currentUser.city}, {currentUser.state}
                 </div>
               </div>
-
+              
+              
               <div className="workout-pie-chart">
-                <div className="feed-user-info">
-                  <div className="data-title">Workouts by Sport</div>
-                </div>
+              <div className="feed-user-info">
+                <div className="data-title">Workouts by Sport</div>
+              </div>
                 <canvas id="myChart" ref={this.chartRef} />
               </div>
-
+              
               <div className="my-workouts-link">
-                <Link to="/workouts">
-                  My Workouts<i className="fas fa-chevron-right"></i>
-                </Link>
+                  <Link to="/workouts">My Workouts<i className="fas fa-chevron-right"></i></Link>
               </div>
             </div>
           </div>
@@ -104,21 +104,16 @@ class Feed extends React.Component {
           </div>
           <div className="feed-right">
             <div className="feed-right-links">
-              <div className="feed-right-links-div">
-                <div className="feed-link-item">
-                  <a href="https://github.com/mitchellreiss">
-                    {" "}
-                    <div className="github-logo"> </div>
-                    <h3>Follow me on GitHub</h3>
-                  </a>
-                </div>
-                <div className="feed-link-item">
-                  <a href="https://www.linkedin.com/in/mitchell-reiss/">
-                    <div className="linkedin-logo"></div>
-                    <h3>Connect with me on LinkedIn</h3>
-                  </a>
-                </div>
-              </div>
+              <h3>Follow me on GitHub</h3>
+              <a
+                href="https://github.com/mitchellreiss"
+                className="github-logo"
+              ></a>
+              <h3>Connect with me on LinkedIn</h3>
+              <a
+                href="https://www.linkedin.com/in/mitchell-reiss/"
+                className="linkedin-logo"
+              ></a>
             </div>
           </div>
         </div>

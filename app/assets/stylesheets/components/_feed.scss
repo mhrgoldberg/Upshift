@@ -23,34 +23,16 @@
   flex-direction: row;
   align-items: center;
   width: 200px;
-  justify-content: flex-start;
-  .profile-pic{
-    margin: 10px;
-  }
+  justify-content: space-around;
 
-}
-
-.feed-right-links-div{
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  align-items: center;
-  a{
-    display: flex;
-    align-content: space-around;
-    align-items: center;
-    color: #007FB6;
-
-  }
-  
 }
 
 .feed-user-data{
   position: -webkit-sticky;
   position: sticky;
   top: 12vh;
-  width: 250px;
-  height: 380px;
+  width:220px;
+  height: 351px;
   background: white;
   border-radius: 5px;
   margin-left: 5vw;
@@ -61,34 +43,30 @@
   // align-items: center;
   // justify-content: center;
   box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
-  .profile-pic{
-    margin: 10px;
-  }
 }
 
 .feed-right-links{
   position: -webkit-sticky;
   position: sticky;
-  top: 13vh;
+  top: 12vh;
   // width:220px;
   // height: 300px;
   // background: white;
-  margin-left: 5vw;
   border-radius: 5px;
   margin-right: 5vw;
   // margin-top: 10px;
   color: #2d2d32;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   // justify-content: center;
   // box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
   h3{
+    border-bottom: 1px solid rgba(13, 13, 18, 0.158);
     text-align: center;
     width: 180px;
     font-size: 18px;
-    color: #007FB6;
-    margin: 5px;
+    margin-top: 5px;
   }
 }
 .data-row{
@@ -123,27 +101,17 @@
   
 }
 
-.feed-link-item{
-  width: fit-content;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  align-content: space-around;
-
-}
-
 .github-logo{
   background: asset-url("GitHub-Mark-120px-plus.png");
-  width: 50px;
-  height: 50px;
-  background-size: cover;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
 }
 
 .linkedin-logo{
   background: asset-url("LI-In-Bug.png");
-  width: 50px;
-  height: 50px;
+  width: 120px;
+  height: 120px;
   background-size: cover;
 }
 
@@ -158,7 +126,6 @@
 .feed-user-info {
   margin: 5%;
   text-align: center;
-
 }
 
 @media only screen and (min-width: 1500px) {

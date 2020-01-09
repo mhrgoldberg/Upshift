@@ -31,7 +31,7 @@ class FeedItem extends React.Component {
     return(
       <div className="feed-index-item">
         <div className="user-info">
-          <div className="profile-pic"></div>
+          <div className="profile_pic"></div>
           <h3>{username}</h3>
         </div>
         <h2><Link className="workout-title" to={`/workout/${id}`}>{title}</Link></h2>
