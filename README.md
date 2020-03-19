@@ -26,12 +26,6 @@ Upshift, is my take on cloning Strava which allows you to create and track your 
   * Google elevations service
   * Google static maps
 
-## Features
-* Sign Up/ Sign In/ Log Out
-* Workout Feed
-* Route creation with the Google Maps API
-* Workout tracking
-
 ## Challenges
 
 One of the biggest challenges I encountered while building this app was deciding on how I was going to map workout routes and store them in the database. I had considered a few differnet mapping API options but ultimately decided on using Google Maps. I considered two differnt ways of drawing routes on a map. The first option was using markers and a polyline to connect the markers with the Snap to Roads functionality in the Roads API but decided against this due to the lack of context the service provides for transportation mode(cycling or running). I ultimately used the directions service to map between all the different waypoints the user inputs by clicking on the map. This allowed for me to route inteligently based on if the user is trying to map a ride or run. I wrote the below request to the google maps directions service API using the local React state to store all the waypoints of the route and the transportation mode.
