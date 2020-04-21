@@ -1,5 +1,5 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 
 class SaveRouteForm extends React.Component {
   constructor(props) {
@@ -12,51 +12,53 @@ class SaveRouteForm extends React.Component {
       elevation_gain: this.props.routeInfo.elevation_gain,
       elevation_loss: this.props.routeInfo.elevation_loss,
       max_elevation: this.props.routeInfo.max_elevation,
-      title: ''
-    }
+      title: "",
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createRoute(this.state)
-    .then(payload => {
-        this.props.closeModal();
-        this.props.history.push(`/route/${payload.route.id}`);
-    })
+    this.props.createRoute(this.state).then((payload) => {
+      this.props.closeModal();
+      this.props.history.push(`/route/${payload.route.id}`);
+    });
   }
 
   update(type) {
-    return (e) => this.setState( {[type]: e.currentTarget.value } )
+    return (e) => this.setState({ [type]: e.currentTarget.value });
   }
 
   render() {
     const { errors } = this.props;
 
-    const err = <ul className="errors">
-      { errors.map( (error, i) => {
-        return <li key={i}>{error}</li>
-      })}
-    </ul>
+    const err = (
+      <ul className="errors">
+        {errors.map((error, i) => {
+          return <li key={i}>{error}</li>;
+        })}
+      </ul>
+    );
 
     return (
-      <div className='save-route-modal'>
+      <div className="save-route-modal">
         <h2>Save Route</h2>
-        <br/>
+        <br />
         <div className="route-errors">{err}</div>
-        <br/>
+        <br />
         <form onSubmit={this.handleSubmit}>
-          <input type="text" 
-            onChange={this.update('title')} 
-            value={this.state.title} 
+          <input
+            type="text"
+            onChange={this.update("title")}
+            value={this.state.title}
             placeholder="Title"
           />
-          <br/>
+          <br />
           <button>Save</button>
         </form>
       </div>
-    )
+    );
   }
 }
 

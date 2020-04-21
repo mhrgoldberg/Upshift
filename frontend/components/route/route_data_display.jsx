@@ -1,7 +1,13 @@
-import React from 'react';
+import React from "react";
 
 const RouteDataDisplay = (props) => {
-  const {route_type, distance, elevation_gain, elevation_loss, max_elevation} = props;
+  const {
+    route_type,
+    distance,
+    elevation_gain,
+    elevation_loss,
+    max_elevation,
+  } = props;
   return (
     <div className="data-display">
       <ul>
@@ -27,7 +33,7 @@ const RouteDataDisplay = (props) => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default RouteDataDisplay;
