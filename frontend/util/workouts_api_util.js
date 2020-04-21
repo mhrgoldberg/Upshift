@@ -1,36 +1,31 @@
-export const postWorkout = workout => (
+export const postWorkout = (workout) =>
   $.ajax({
-    method: 'POST',
-    url: '/api/workouts',
-    data: { workout }
-  })
-)
+    method: "POST",
+    url: "/api/workouts",
+    data: { workout },
+  });
 
-export const getAllWorkouts = () => (
+export const getAllWorkouts = () =>
   $.ajax({
-    method: 'GET',
-    url: '/api/workouts'
-  })
-)
+    method: "GET",
+    url: "/api/workouts",
+  });
 
-export const getWorkout = workoutId => (
+export const getWorkout = (workoutId) =>
   $.ajax({
-    method: 'GET',
+    method: "GET",
     url: `/api/workouts/${workoutId}`,
-  })
-)
+  });
 
-export const patchWorkout = workout => (
+export const patchWorkout = (workout) =>
   $.ajax({
-    method: 'PATCH',
+    method: "PATCH",
     url: `/api/workouts/${workout.id}`,
-    data: { workout }
-  })
-)
+    data: { workout },
+  });
 
-export const destroyWorkout = workoutId => (
+export const destroyWorkout = (workoutId) =>
   $.ajax({
-    method: 'DELETE',
+    method: "DELETE",
     url: `/api/workouts/${workoutId}`,
-  })
-)
+  });
