@@ -32,7 +32,7 @@ const App = () => (
         <LoggedInRoute path="/workout/:workoutId" component={ShowWorkoutContainer} />
         <LoggedInRoute path="/workouts" component={WorkoutIndexContainer} />
         <LoggedInRoute path="/feed" component={FeedContainer} />
-        <AuthRoute exact path="/" component={Splash} />
+        <AuthRoute exact path="/" component={LoginFormContainer} />
         <Route component={NotFound} />
       </Switch>
 
