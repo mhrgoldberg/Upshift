@@ -11,7 +11,7 @@ class NavBar extends React.Component {
 
   signUpLink() {
     this.props.clearSessionErrors();
-    this.props.history.push("/signup");
+    this.props.history.push("/signup"); 
   }
 
   loginLink() {
