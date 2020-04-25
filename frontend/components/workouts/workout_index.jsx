@@ -4,8 +4,16 @@ import { Link } from 'react-router-dom'
 
 class WorkoutIndex extends React.Component{
 
+  constructor(props){
+    super(props);
+    this.state = {
+      workouts: []
+    };
+  }
   componentDidMount() {
-    this.props.fetchAllWorkouts();
+    this.props.fetchAllWorkouts().then( payload => {
+      this.setState({ workouts: Object.values(payload.workouts).reverse() });
+    })
   }
 
   render() {
