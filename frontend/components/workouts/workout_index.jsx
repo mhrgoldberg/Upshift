@@ -33,7 +33,7 @@ class WorkoutIndex extends React.Component{
           <th>Avg Speed</th>
           <th>Modify Workout</th>
         </tr>
-          {workouts.reverse().map( workout => {
+          {workouts.map( workout => {
             const hours = Math.floor(workout.duration/60);
             const minutes = ("0" + Math.floor(workout.duration%60)).slice(-2);
             const seconds = ("0" + Math.round((workout.duration % 1) * 60)).slice(-2);
