@@ -102,6 +102,8 @@ class NavBar extends React.Component {
         rSide = this.logInFormButtons();
       } else if (location.pathname === "/signup") {
         rSide = this.signUpFormButtons();
+      } else {
+        rSide = this.logInFormButtons();
       }
     }
 
