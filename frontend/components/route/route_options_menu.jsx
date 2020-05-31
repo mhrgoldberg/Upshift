@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const RouteOptionsMenu = (props) => {
-  const {setRouteTypeToRunning, setRouteTypeToCycling, save} = props;
+  const { setRouteTypeToRunning, setRouteTypeToCycling, save } = props;
 
-  return(
+  return (
     <div className="route-options">
       <div className="left-buttons">
         <div className="route-type" onClick={setRouteTypeToCycling}>
@@ -14,10 +14,12 @@ const RouteOptionsMenu = (props) => {
         </div>
       </div>
       <div className="right-buttons">
-        <button className="save" onClick={save}>Save</button>
+        <button className="save" onClick={save}>
+          Save
+        </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RouteOptionsMenu;

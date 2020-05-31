@@ -1,9 +1,8 @@
-export const getUserFeed = () => (
+export const getUserFeed = () =>
   $.ajax({
-    method: 'GET',
-    url: '/api/users'
-  })
-)
+    method: "GET",
+    url: "/api/users",
+  });
 
 // export const getUser = userId => (
 //   $.ajax({

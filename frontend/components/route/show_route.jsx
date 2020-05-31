@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 class ShowRoute extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.calcRoute = this.calcRoute.bind(this);
   }
@@ -11,46 +10,38 @@ class ShowRoute extends React.Component {
   componentDidMount() {
     this.directionsService = new google.maps.DirectionsService();
     this.directionsRenderer = new google.maps.DirectionsRenderer();
-    this.elevationService = new google.maps.ElevationService;
-    
+    this.elevationService = new google.maps.ElevationService();
+
     const mapOptions = {
       center: { lat: 37.7758, lng: -122.435 },
-      zoom: 15
+      zoom: 15,
     };
     this.directionsRenderer.setOptions({
-      preserveViewport: true
-    })
+      preserveViewport: true,
+    });
     this.map = new google.maps.Map(this.refs.map, mapOptions);
     this.directionsRenderer.setMap(this.map);
-    this.props.fetchRoute(this.props.match.params.routeId)
-    .then( () => {    
-     
-     
-      
-      
+    this.props.fetchRoute(this.props.match.params.routeId).then(() => {
       var routeData = JSON.parse(this.props.route.data);
-      var markers = routeData.map( marker => {
-        return new google.maps.LatLng(
-          marker.location
-        )
-      })
+      var markers = routeData.map((marker) => {
+        return new google.maps.LatLng(marker.location);
+      });
       const bounds = new google.maps.LatLngBounds();
-      markers.forEach( marker => bounds.extend(marker));
+      markers.forEach((marker) => bounds.extend(marker));
       this.map.setCenter(bounds.getCenter());
       this.map.fitBounds(bounds);
       this.calcRoute();
-      })
-    
+    });
   }
-
 
   calcRoute() {
     var routeData = JSON.parse(this.props.route.data);
     const request = {
       origin: routeData[0].location,
-      destination: routeData[routeData.length-1].location,
+      destination: routeData[routeData.length - 1].location,
       waypoints: routeData.slice(1, -1),
-      travelMode: this.props.route.route_type === 'Running' ? 'WALKING' : 'BICYCLING',
+      travelMode:
+        this.props.route.route_type === "Running" ? "WALKING" : "BICYCLING",
       optimizeWaypoints: false,
       avoidFerries: true,
       avoidHighways: true,
@@ -58,23 +49,32 @@ class ShowRoute extends React.Component {
     };
 
     this.directionsService.route(request, (result, status) => {
-      if (status == 'OK') {   
+      if (status == "OK") {
         this.directionsRenderer.setDirections(result);
       }
     });
   }
 
   render() {
-    const {title, route_type, distance, elevation_gain, elevation_loss, max_elevation} = this.props.route;
+    const {
+      title,
+      route_type,
+      distance,
+      elevation_gain,
+      elevation_loss,
+      max_elevation,
+    } = this.props.route;
 
     return (
       <div className="show">
         <div className="routes-sub-header">
-        <h1>{route_type} Route</h1>
-        <Link to="/routes"><button>All Routes</button></Link>
+          <h1>{route_type} Route</h1>
+          <Link to="/routes">
+            <button>All Routes</button>
+          </Link>
         </div>
         <div className="show-container">
-          <div id="map" ref='map' />
+          <div id="map" ref="map" />
           <div className="show-route-data">
             <h2>{title}</h2>
             <ul>
@@ -102,9 +102,7 @@ class ShowRoute extends React.Component {
           </div>
         </div>
       </div>
-    )
-
-    
+    );
   }
 }
 

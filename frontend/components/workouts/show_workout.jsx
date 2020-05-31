@@ -18,17 +18,17 @@ class ShowWorkout extends React.Component {
 
     const mapOptions = {
       center: { lat: 37.7758, lng: -122.435 },
-      zoom: 15
+      zoom: 15,
     };
     this.directionsRenderer.setOptions({
-      preserveViewport: true
+      preserveViewport: true,
     });
     this.map = new google.maps.Map(this.refs.map, mapOptions);
     this.directionsRenderer.setMap(this.map);
 
     this.props
       .fetchWorkout(this.props.match.params.workoutId)
-      .then(payload => {
+      .then((payload) => {
         // setting chart options
         const route = this.props.fetchRoute(payload.workout.route_id);
         let fatigue = 0;
@@ -54,10 +54,10 @@ class ShowWorkout extends React.Component {
                   "#fd4c01c4",
                   "#007fb6c4",
                   "#c6eac6c4",
-                  "#ea4335c4"
-                ]
-              }
-            ]
+                  "#ea4335c4",
+                ],
+              },
+            ],
           },
           options: {
             responsive: true,
@@ -65,21 +65,21 @@ class ShowWorkout extends React.Component {
             legend: {
               position: "right",
               labels: {
-                usePointStyle: true
-              }
-            }
-          }
+                usePointStyle: true,
+              },
+            },
+          },
         });
 
         return route;
       })
-      .then(payload => {
+      .then((payload) => {
         var routeData = JSON.parse(payload.route.data);
-        var markers = routeData.map(marker => {
+        var markers = routeData.map((marker) => {
           return new google.maps.LatLng(marker.location);
         });
         const bounds = new google.maps.LatLngBounds();
-        markers.forEach(marker => bounds.extend(marker));
+        markers.forEach((marker) => bounds.extend(marker));
         this.map.setCenter(bounds.getCenter());
         this.map.fitBounds(bounds);
 
@@ -92,7 +92,7 @@ class ShowWorkout extends React.Component {
           optimizeWaypoints: false,
           avoidFerries: true,
           avoidHighways: true,
-          avoidTolls: true
+          avoidTolls: true,
         };
 
         this.directionsService.route(request, (result, status) => {
@@ -100,10 +100,10 @@ class ShowWorkout extends React.Component {
             this.directionsRenderer.setDirections(result);
           }
         });
-        const latLng = routeData.map(point => {
+        const latLng = routeData.map((point) => {
           return {
             lat: point.location.lat,
-            lng: point.location.lng
+            lng: point.location.lng,
           };
         });
         // this.getElevationSample(latLng, this.elevationService)
@@ -156,13 +156,13 @@ class ShowWorkout extends React.Component {
       title,
       duration,
       resting_hr,
-      id
+      id,
     } = this.props.workouts;
     const {
       distance,
       elevation_gain,
       elevation_loss,
-      max_elevation
+      max_elevation,
     } = this.props.routes;
     const hours = Math.floor(duration / 60);
     const minutes = ("0" + Math.floor(duration % 60)).slice(-2);

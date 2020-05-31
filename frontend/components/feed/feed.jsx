@@ -8,23 +8,23 @@ class Feed extends React.Component {
     super(props);
     this.chartRef = React.createRef();
     this.state = {
-      workouts: []
+      workouts: [],
     };
   }
 
   componentDidMount() {
     const myChartRef = this.chartRef.current.getContext("2d");
-    this.props.fetchUserFeed().then(payload => {
+    this.props.fetchUserFeed().then((payload) => {
       this.setState({ workouts: Object.values(payload.workouts).reverse() });
       let bike_count = 0;
       let run_count = 0;
       if (payload.userWorkouts) {
         bike_count = Object.values(payload.userWorkouts).filter(
-          workout => workout.workout_type === "Cycling"
+          (workout) => workout.workout_type === "Cycling"
         ).length;
 
         run_count = Object.values(payload.userWorkouts).filter(
-          workout => workout.workout_type === "Running"
+          (workout) => workout.workout_type === "Running"
         ).length;
       }
 
@@ -37,19 +37,19 @@ class Feed extends React.Component {
             {
               label: "Total Workouts",
               data,
-              backgroundColor: ["#fd4c01c4", "#007fb6c4"]
-            }
-          ]
+              backgroundColor: ["#fd4c01c4", "#007fb6c4"],
+            },
+          ],
         },
         options: {
           responsive: true,
           legend: {
             position: "right",
             labels: {
-              usePointStyle: true
-            }
-          }
-        }
+              usePointStyle: true,
+            },
+          },
+        },
       });
     });
   }
@@ -91,7 +91,7 @@ class Feed extends React.Component {
             </div>
           </div>
           <div className="feed-center">
-            {workouts.map(workout => {
+            {workouts.map((workout) => {
               return (
                 <FeedItem
                   workout={workout}

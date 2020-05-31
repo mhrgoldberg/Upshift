@@ -1,5 +1,5 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom'
+import React from "react";
+import { withRouter } from "react-router-dom";
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
@@ -19,31 +19,29 @@ class SignUpForm extends React.Component {
   }
 
   update(type) {
-    return (e) => this.setState( {[type]: e.currentTarget.value } )
+    return (e) => this.setState({ [type]: e.currentTarget.value });
   }
-
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.signUp(user).then( () => 
-      this.props.history.push("/feed")
-    )
+    this.props.signUp(user).then(() => this.props.history.push("/feed"));
   }
 
   render() {
     const { errors } = this.props;
 
-    const err = <ul className="errors">
-      { errors.map( (error, i) => {
-        return <li key={i}>{error}</li>
-      })}
-    </ul>
-            
+    const err = (
+      <ul className="errors">
+        {errors.map((error, i) => {
+          return <li key={i}>{error}</li>;
+        })}
+      </ul>
+    );
+
     return (
       <div className="background-signup">
         <div className="form">
-
           <h2 className="h2-form">Sign Up</h2>
           <br />
           <div className="errors">{err}</div>
@@ -51,18 +49,20 @@ class SignUpForm extends React.Component {
 
           <form onSubmit={this.handleSubmit}>
             <label>
-              <input type="text" 
-                onChange={this.update('username')} 
-                value={this.state.username} 
+              <input
+                type="text"
+                onChange={this.update("username")}
+                value={this.state.username}
                 placeholder="Username"
-                />
+              />
             </label>
 
             <br />
 
             <label>
-              <input type="password" 
-                onChange={this.update('password')} 
+              <input
+                type="password"
+                onChange={this.update("password")}
                 value={this.state.password}
                 placeholder="Password"
               />
@@ -71,38 +71,42 @@ class SignUpForm extends React.Component {
             <br />
 
             <label>
-              <input type="text" 
-                onChange={this.update('city')} 
+              <input
+                type="text"
+                onChange={this.update("city")}
                 value={this.state.city}
                 placeholder="City"
-                />
+              />
             </label>
 
             <br />
 
             <label>
-              <input type="text" 
-                onChange={this.update('state')} 
+              <input
+                type="text"
+                onChange={this.update("state")}
                 value={this.state.state}
                 placeholder="State"
-                />
+              />
             </label>
 
             <br />
 
             <label>
-              <input type="text" 
-                onChange={this.update('country')} 
+              <input
+                type="text"
+                onChange={this.update("country")}
                 value={this.state.country}
                 placeholder="Country"
-                />
+              />
             </label>
 
             <br />
 
             <label>
-              <input type="number" 
-                onChange={this.update('age')} 
+              <input
+                type="number"
+                onChange={this.update("age")}
                 value={this.state.age}
                 placeholder="Age"
                 min="0"
@@ -112,9 +116,9 @@ class SignUpForm extends React.Component {
             <br />
 
             <label>
-              <select 
-                value={this.state.gender} 
-                onChange={this.update('gender')}
+              <select
+                value={this.state.gender}
+                onChange={this.update("gender")}
               >
                 <option>Gender</option>
                 <option value="male">Male</option>
@@ -126,9 +130,9 @@ class SignUpForm extends React.Component {
             <br />
 
             <label>
-              <select 
-              value={this.state.primarySport} 
-              onChange={this.update('primary_sport')}
+              <select
+                value={this.state.primarySport}
+                onChange={this.update("primary_sport")}
               >
                 <option>Primary Sport</option>
                 <option value="running">Running</option>
@@ -143,12 +147,8 @@ class SignUpForm extends React.Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
-
-
-
-
 
 export default withRouter(SignUpForm);
