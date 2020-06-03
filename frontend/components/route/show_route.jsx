@@ -23,6 +23,7 @@ class ShowRoute extends React.Component {
     this.directionsRenderer.setMap(this.map);
     this.props.fetchRoute(this.props.match.params.routeId).then(() => {
       var routeData = JSON.parse(this.props.route.data);
+      debugger;
       var markers = routeData.map((marker) => {
         return new google.maps.LatLng(marker.location);
       });
@@ -36,6 +37,7 @@ class ShowRoute extends React.Component {
 
   calcRoute() {
     var routeData = JSON.parse(this.props.route.data);
+    debugger
     const request = {
       origin: routeData[0].location,
       destination: routeData[routeData.length - 1].location,

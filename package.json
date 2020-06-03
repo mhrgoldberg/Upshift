@@ -6,6 +6,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
     "chart.js": "^2.9.3",
     "google-maps-react": "^2.0.2",
     "react": "^16.11.0",
