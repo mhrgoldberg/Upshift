@@ -18,9 +18,6 @@ module.exports = {
             presets: ["@babel/env", "@babel/react"],
           },
         },
-        options: {
-          plugins: ["@babel/transform-runtime"],
-        }
       },
     ],
   },
