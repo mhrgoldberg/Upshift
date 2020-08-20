@@ -6,16 +6,11 @@ class RouteIndex extends React.Component {
     this.props.fetchAllRoutes();
   }
 
-  createURL(data) {
+  createURL(polyline) {
     const url =
-      "https://maps.googleapis.com/maps/api/staticmap?&path=color:0xfd4c01|";
+      "https://maps.googleapis.com/maps/api/staticmap?&path=color:0xfd4c01%7Cenc:";
     const options = `&size=250x250&key=${window.googleAPIKey}`;
-    const path = JSON.parse(data)
-      .map(
-        (waypoint) => `${waypoint["location"].lat},${waypoint["location"].lng}`
-      )
-      .join("|");
-    return url + path + options;
+    return url + polyline + options;
   }
 
   render() {
@@ -33,7 +28,7 @@ class RouteIndex extends React.Component {
               <Link to={`/route/${route.id}`}>
                 <img
                   className="map-img"
-                  src={`${this.createURL(route.data)}`}
+                  src={`${this.createURL(route.polyline)}`}
                 />
               </Link>
               <div className="index-data">

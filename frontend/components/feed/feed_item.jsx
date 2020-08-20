@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 
 class FeedItem extends React.Component {
 
-  createURL(data) {
-    const url = "https://maps.googleapis.com/maps/api/staticmap?&path=color:0xfd4c01|";
+  createURL(polyline) {
+    const url =
+      "https://maps.googleapis.com/maps/api/staticmap?&path=color:0xfd4c01%7Cenc:";
     const options = `&size=550x300&key=${window.googleAPIKey}`;
-    const path = JSON.parse(data).map( waypoint => (
-      `${waypoint["location"].lat},${waypoint["location"].lng}`
-    )).join('|');
-    return url + path + options;
+    return url + polyline + options;
   }
 
 
@@ -19,7 +17,7 @@ class FeedItem extends React.Component {
       return null;
     }
 
-    const {data, distance, elevation_gain} = this.props.route;
+    const {polyline, distance, elevation_gain} = this.props.route;
     const {duration, avg_speed, title, created_at, id} = this.props.workout;
     const { username } = this.props.user;
 
@@ -54,7 +52,7 @@ class FeedItem extends React.Component {
           </div>
         </div>
         <Link className="workout-title" to={`/workout/${id}`}>
-          <img className="feed-map-img" src={`${this.createURL(data)}`} />
+          <img className="feed-map-img" src={`${this.createURL(polyline)}`} />
         </Link>
       </div>
     )

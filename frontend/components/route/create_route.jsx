@@ -9,21 +9,24 @@ class CreateRoute extends React.Component {
     this.state = {
       route_type: "Running",
       waypoints: [],
+      polyline: "",
+      path: [],
+      elevationSamples: [],
       distance: 0,
       elevation_gain: 0,
       elevation_loss: 0,
       max_elevation: 0,
     };
-    this.elevations = [];
     this.addWaypoints = this.addWaypoints.bind(this);
     this.calcRoute = this.calcRoute.bind(this);
-    this.getElevation = this.getElevation.bind(this);
+    // this.getElevation = this.getElevation.bind(this);
     this.setRouteTypeToCycling = this.setRouteTypeToCycling.bind(this);
     this.setRouteTypeToRunning = this.setRouteTypeToRunning.bind(this);
     this.calcElevationGain = this.calcElevationGain.bind(this);
     this.calcElevationLoss = this.calcElevationLoss.bind(this);
     this.calcMaxElevation = this.calcMaxElevation.bind(this);
     this.calcAllElevationStats = this.calcAllElevationStats.bind(this);
+    this.getElevationAlongPath = this.getElevationAlongPath.bind(this);
     this.save = this.save.bind(this);
   }
 
@@ -43,8 +46,20 @@ class CreateRoute extends React.Component {
     google.maps.event.addListener(this.map, "click", (e) => {
       this.addWaypoints(e.latLng);
       this.calcRoute();
-      this.getElevation(e.latLng, this.elevationService);
     });
+  }
+
+  getElevationAlongPath(path) {
+    this.elevationService.getElevationAlongPath(
+      { path: path, samples: 100 },
+      (results, status) => {
+        if (status === "OK") {
+          const elevationSamples = results.map(({ elevation }) => elevation);
+          this.setState({ elevationSamples });
+          this.calcAllElevationStats();
+        }
+      }
+    );
   }
 
   save(e) {
@@ -83,12 +98,20 @@ class CreateRoute extends React.Component {
       if (status == "OK") {
         this.directionsRenderer.setDirections(result);
         // Set distance to the sum of all leg distances and convert to miles
+        this.getElevationAlongPath(result.routes[0].overview_path);
+
         this.setState({
           distance:
             result.routes[0].legs
               .map((leg) => leg.distance.value)
               .reduce((a, b) => a + b, 0) / 1609.344,
+          polyline: result.routes[0].overview_polyline,
+          path: result.routes[0].overview_path.map((ele) => ({
+            lat: ele.lat(),
+            lng: ele.lng(),
+          })),
         });
+        console.log(this.state);
       }
     });
   }
@@ -102,21 +125,21 @@ class CreateRoute extends React.Component {
     this.setState({ waypoints });
   }
 
-  getElevation(location, elevationService) {
-    elevationService.getElevationForLocations(
-      {
-        locations: [location],
-      },
-      (results, status) => {
-        if (status === "OK") {
-          if (results[0]) {
-            this.elevations.push(Math.floor(results[0].elevation));
-            this.calcAllElevationStats();
-          }
-        }
-      }
-    );
-  }
+  // getElevation(location, elevationService) {
+  //   elevationService.getElevationForLocations(
+  //     {
+  //       locations: [location],
+  //     },
+  //     (results, status) => {
+  //       if (status === "OK") {
+  //         if (results[0]) {
+  //           this.elevations.push(Math.floor(results[0].elevation));
+  //           this.calcAllElevationStats();
+  //         }
+  //       }
+  //     }
+  //   );
+  // }
 
   calcAllElevationStats() {
     this.calcElevationGain();
@@ -127,26 +150,32 @@ class CreateRoute extends React.Component {
   calcElevationGain() {
     let gain = 0;
 
-    for (let i = 0; i < this.elevations.length - 1; i++) {
-      if (this.elevations[i] < this.elevations[i + 1]) {
-        gain += this.elevations[i + 1] - this.elevations[i];
+    for (let i = 0; i < this.state.elevationSamples.length - 1; i++) {
+      let current = this.state.elevationSamples[i];
+      let next = this.state.elevationSamples[i + 1];
+      if (current < next) {
+        gain += next - current;
       }
     }
-    this.setState({ elevation_gain: gain });
+    this.setState({ elevation_gain: Math.floor(gain) });
   }
 
   calcElevationLoss() {
     let loss = 0;
-    for (let i = 0; i < this.elevations.length - 1; i++) {
-      if (this.elevations[i] > this.elevations[i + 1]) {
-        loss += this.elevations[i + 1] - this.elevations[i];
+    for (let i = 0; i < this.state.elevationSamples.length - 1; i++) {
+      let current = this.state.elevationSamples[i];
+      let next = this.state.elevationSamples[i + 1];
+      if (current > next) {
+        loss += next - current;
       }
     }
-    this.setState({ elevation_loss: loss });
+    this.setState({ elevation_loss: Math.floor(loss) });
   }
 
   calcMaxElevation() {
-    this.setState({ max_elevation: Math.max(...this.elevations) });
+    this.setState({
+      max_elevation: Math.floor(Math.max(...this.state.elevationSamples)),
+    });
   }
 
   render() {

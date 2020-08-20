@@ -2,56 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class ShowRoute extends React.Component {
-  constructor(props) {
-    super(props);
-    this.calcRoute = this.calcRoute.bind(this);
-  }
 
   componentDidMount() {
-    this.directionsService = new google.maps.DirectionsService();
-    this.directionsRenderer = new google.maps.DirectionsRenderer();
-    this.elevationService = new google.maps.ElevationService();
-
     const mapOptions = {
-      center: { lat: 37.7758, lng: -122.435 },
+      center: { lat: 37.7758, lng: -122.435 }, // this is SF
       zoom: 15,
     };
-    this.directionsRenderer.setOptions({
-      preserveViewport: true,
-    });
     this.map = new google.maps.Map(this.refs.map, mapOptions);
-    this.directionsRenderer.setMap(this.map);
     this.props.fetchRoute(this.props.match.params.routeId).then(() => {
-      var routeData = JSON.parse(this.props.route.data);
-      var markers = routeData.map((marker) => {
-        return new google.maps.LatLng(marker.location);
+      const latLngPath = JSON.parse(this.props.route.path);
+      const routePath = new window.google.maps.Polyline({
+        path: latLngPath,
+        geodesic: true,
+        strokeColor: "#fd4c01",
+        strokeOpacity: 2,
+        strokeWeight: 3,
       });
       const bounds = new google.maps.LatLngBounds();
-      markers.forEach((marker) => bounds.extend(marker));
+      latLngPath.forEach((trackPoint) => bounds.extend(trackPoint));
       this.map.setCenter(bounds.getCenter());
       this.map.fitBounds(bounds);
-      this.calcRoute();
-    });
-  }
-
-  calcRoute() {
-    var routeData = JSON.parse(this.props.route.data);
-    const request = {
-      origin: routeData[0].location,
-      destination: routeData[routeData.length - 1].location,
-      waypoints: routeData.slice(1, -1),
-      travelMode:
-        this.props.route.route_type === "Running" ? "WALKING" : "BICYCLING",
-      optimizeWaypoints: false,
-      avoidFerries: true,
-      avoidHighways: true,
-      avoidTolls: true,
-    };
-
-    this.directionsService.route(request, (result, status) => {
-      if (status == "OK") {
-        this.directionsRenderer.setDirections(result);
-      }
+      routePath.setMap(this.map);
     });
   }
 

@@ -7,7 +7,10 @@ class SaveRouteForm extends React.Component {
     this.state = {
       user_id: this.props.currentUserId,
       route_type: this.props.routeInfo.route_type,
-      data: JSON.stringify(this.props.routeInfo.waypoints),
+      waypoints: JSON.stringify(this.props.routeInfo.waypoints),
+      polyline: this.props.routeInfo.polyline,
+      path: JSON.stringify(this.props.routeInfo.path),
+      elevation_samples: JSON.stringify(this.props.routeInfo.elevationSamples),
       distance: this.props.routeInfo.distance,
       elevation_gain: this.props.routeInfo.elevation_gain,
       elevation_loss: this.props.routeInfo.elevation_loss,
@@ -17,6 +20,8 @@ class SaveRouteForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
+
+  
 
   handleSubmit(e) {
     e.preventDefault();

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_214014) do
+ActiveRecord::Schema.define(version: 2020_08_20_023846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,12 @@ ActiveRecord::Schema.define(version: 2019_11_19_214014) do
     t.integer "elevation_gain", null: false
     t.integer "elevation_loss", null: false
     t.integer "max_elevation", null: false
-    t.text "data", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "polyline", null: false
+    t.text "elevation_samples", null: false
+    t.text "path", null: false
+    t.text "waypoints"
     t.index ["distance"], name: "index_routes_on_distance"
     t.index ["route_type"], name: "index_routes_on_route_type"
     t.index ["user_id"], name: "index_routes_on_user_id"

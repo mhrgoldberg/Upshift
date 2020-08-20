@@ -12,19 +12,13 @@ class ShowWorkout extends React.Component {
     // grabbing canvas element off page
     const myChartRef = this.chartRef.current.getContext("2d");
     // Fetching workout
-    this.directionsService = new google.maps.DirectionsService();
-    this.directionsRenderer = new google.maps.DirectionsRenderer();
-    this.elevationService = new google.maps.ElevationService();
 
     const mapOptions = {
       center: { lat: 37.7758, lng: -122.435 },
       zoom: 15,
     };
-    this.directionsRenderer.setOptions({
-      preserveViewport: true,
-    });
     this.map = new google.maps.Map(this.refs.map, mapOptions);
-    this.directionsRenderer.setMap(this.map);
+
 
     this.props
       .fetchWorkout(this.props.match.params.workoutId)
@@ -74,39 +68,20 @@ class ShowWorkout extends React.Component {
         return route;
       })
       .then((payload) => {
-        var routeData = JSON.parse(payload.route.data);
-        var markers = routeData.map((marker) => {
-          return new google.maps.LatLng(marker.location);
-        });
-        const bounds = new google.maps.LatLngBounds();
-        markers.forEach((marker) => bounds.extend(marker));
-        this.map.setCenter(bounds.getCenter());
-        this.map.fitBounds(bounds);
-
-        const request = {
-          origin: routeData[0].location,
-          destination: routeData[routeData.length - 1].location,
-          waypoints: routeData.slice(1, -1),
-          travelMode:
-            payload.route.route_type === "Running" ? "WALKING" : "BICYCLING",
-          optimizeWaypoints: false,
-          avoidFerries: true,
-          avoidHighways: true,
-          avoidTolls: true,
-        };
-
-        this.directionsService.route(request, (result, status) => {
-          if (status == "OK") {
-            this.directionsRenderer.setDirections(result);
-          }
-        });
-        const latLng = routeData.map((point) => {
-          return {
-            lat: point.location.lat,
-            lng: point.location.lng,
-          };
-        });
-        // this.getElevationSample(latLng, this.elevationService)
+        const latLngPath = JSON.parse(payload.route.path);
+      const routePath = new window.google.maps.Polyline({
+        path: latLngPath,
+        geodesic: true,
+        strokeColor: "#fd4c01",
+        strokeOpacity: 2,
+        strokeWeight: 3,
+      });
+      const bounds = new google.maps.LatLngBounds();
+      latLngPath.forEach((trackPoint) => bounds.extend(trackPoint));
+      this.map.setCenter(bounds.getCenter());
+      this.map.fitBounds(bounds);
+      routePath.setMap(this.map);
+       
       });
   }
   // getElevationSample(path, elevator) {
@@ -164,6 +139,7 @@ class ShowWorkout extends React.Component {
       elevation_loss,
       max_elevation,
     } = this.props.routes;
+
     const hours = Math.floor(duration / 60);
     const minutes = ("0" + Math.floor(duration % 60)).slice(-2);
     const seconds = ("0" + Math.round((duration % 1) * 60)).slice(-2);
@@ -173,7 +149,6 @@ class ShowWorkout extends React.Component {
       ) : (
         <i className="fas fa-running"></i>
       );
-
     return (
       <div className="show-workout-container">
         <div className="routes-sub-header">

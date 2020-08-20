@@ -21,7 +21,8 @@ class Api::RoutesController < ApplicationController
   def route_params
     params.require(:route).permit(
       :distance, :title, :route_type, :elevation_gain, 
-      :elevation_loss, :max_elevation, :data
+      :elevation_loss, :max_elevation, :path, :waypoints,
+      :elevation_samples, :polyline
     )
   end
 
