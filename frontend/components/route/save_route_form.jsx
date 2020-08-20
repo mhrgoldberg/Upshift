@@ -19,16 +19,41 @@ class SaveRouteForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.createPolylineAndSave = this.createPolylineAndSave.bind(this);
+  }
+
+  createPolylineAndSave() {
+    const path = this.state.data
+      .map(
+        (waypoint) => `${waypoint["location"].lat},${waypoint["location"].lng}`
+      )
+      .join("|");
+    $.ajax({
+      method: "GET",
+      url: `https://roads.googleapis.com/v1/snapToRoads?path=${path}&interpolate=true&key=${window.googleAPIKey}`,
+    }).then((response) => {
+      const newData = response.snappedPoints.map((point) => ({
+        location: {
+          lat: point.location.latitude,
+          lng: point.location.longitude,
+        },
+      }));
+      debugger;
+      this.setState({ data: JSON.stringify(newData) }, () => {
+        this.props.createRoute(this.state).then((payload) => {
+          debugger;
+          this.props.closeModal();
+          this.props.history.push(`/route/${payload.route.id}`);
+        });
+      });
+    });
   }
 
   
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createRoute(this.state).then((payload) => {
-      this.props.closeModal();
-      this.props.history.push(`/route/${payload.route.id}`);
-    });
+    this.createPolylineAndSave();
   }
 
   update(type) {
