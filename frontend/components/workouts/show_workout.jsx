@@ -4,6 +4,12 @@ class ShowWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.chartRef = React.createRef();
+    this.state = {
+      distance: 0,
+      elevation_gain: 0,
+      elevation_loss: 0,
+      max_elevation: 0,
+    };
     // this.getElevationSample = this.getElevationSample.bind(this);
     // this.plotElevation = this.plotElevation.bind(this);
   }
@@ -19,11 +25,9 @@ class ShowWorkout extends React.Component {
     };
     this.map = new google.maps.Map(this.refs.map, mapOptions);
 
-
     this.props
       .fetchWorkout(this.props.match.params.workoutId)
       .then((payload) => {
-        // setting chart options
         const route = this.props.fetchRoute(payload.workout.route_id);
         let fatigue = 0;
         let mood = 0;
@@ -36,7 +40,7 @@ class ShowWorkout extends React.Component {
           quality = payload.workout.quality;
         }
         const data = [fatigue, mood, motivation, quality];
-        const polarChart = new Chart(myChartRef, {
+        new Chart(myChartRef, {
           type: "polarArea",
           data: {
             labels: ["fatigue", "mood", "motivation", "quality"],
@@ -68,20 +72,25 @@ class ShowWorkout extends React.Component {
         return route;
       })
       .then((payload) => {
+        this.setState({
+          distance: payload.route.distance,
+          elevation_gain: payload.route.elevation_gain,
+          elevation_loss: payload.route.elevation_loss,
+          max_elevation: payload.route.max_elevation,
+        });
         const latLngPath = JSON.parse(payload.route.path);
-      const routePath = new window.google.maps.Polyline({
-        path: latLngPath,
-        geodesic: true,
-        strokeColor: "#fd4c01",
-        strokeOpacity: 2,
-        strokeWeight: 3,
-      });
-      const bounds = new google.maps.LatLngBounds();
-      latLngPath.forEach((trackPoint) => bounds.extend(trackPoint));
-      this.map.setCenter(bounds.getCenter());
-      this.map.fitBounds(bounds);
-      routePath.setMap(this.map);
-       
+        const routePath = new window.google.maps.Polyline({
+          path: latLngPath,
+          geodesic: true,
+          strokeColor: "#fd4c01",
+          strokeOpacity: 0.6,
+          strokeWeight: 3,
+        });
+        const bounds = new google.maps.LatLngBounds();
+        latLngPath.forEach((trackPoint) => bounds.extend(trackPoint));
+        this.map.setCenter(bounds.getCenter());
+        this.map.fitBounds(bounds);
+        routePath.setMap(this.map);
       });
   }
   // getElevationSample(path, elevator) {
@@ -138,8 +147,7 @@ class ShowWorkout extends React.Component {
       elevation_gain,
       elevation_loss,
       max_elevation,
-    } = this.props.routes;
-
+    } = this.state;
     const hours = Math.floor(duration / 60);
     const minutes = ("0" + Math.floor(duration % 60)).slice(-2);
     const seconds = ("0" + Math.round((duration % 1) * 60)).slice(-2);

@@ -38,10 +38,8 @@ class SaveRouteForm extends React.Component {
           lng: point.location.longitude,
         },
       }));
-      debugger;
       this.setState({ data: JSON.stringify(newData) }, () => {
         this.props.createRoute(this.state).then((payload) => {
-          debugger;
           this.props.closeModal();
           this.props.history.push(`/route/${payload.route.id}`);
         });
