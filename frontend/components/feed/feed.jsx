@@ -86,11 +86,11 @@ class Feed extends React.Component {
               </div>
               <div className="feed-user-info">
                 <div className="data">
-                  <div className="data-title">Home Base</div>
+                  <div className="data-title">Training Base</div>
                   {this.state.city}
                   {this.state.state}
                 </div>
-                <div className="data">
+                <div className="data primary-sport">
                   <div className="data-title">Primary Sport</div>
                   {this.state.primarySport}
                 </div>
